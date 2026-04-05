@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://quinielard.com/sitemap.xml
