@@ -55,42 +55,45 @@ const LotteryCard = ({ resultado, className = '', fromLabel = null, style: stagg
       return `${dias[d.getDay()]}, ${d.getDate()} de ${meses[d.getMonth()]} ${d.getFullYear()}`
     })()
 
-    // Números principales
+    // Números principales + extras inline
     let numerosTexto
     if (tipo === 'kino' && numeros?.length > 10) {
       numerosTexto = numeros.slice(0, 10).join(' - ') + '\n' + numeros.slice(10).join(' - ')
+    } else if (tipo === 'loto-leidsa') {
+      numerosTexto = numeros?.join(' - ') || ''
+      if (numerosExtra?.[0] != null) numerosTexto += ` ➕ ${numerosExtra[0]}`
+      if (numerosExtra?.[1] != null) numerosTexto += ` - ${numerosExtra[1]}`
+    } else if (tipo === 'loto-loteka') {
+      numerosTexto = numeros?.join(' - ') || ''
+      if (numerosExtra?.[0] != null) numerosTexto += ` ➕ ${numerosExtra[0]}`
+      if (numerosExtra?.[1] != null) numerosTexto += ` ⚡ ${numerosExtra[1]}`
+    } else if (tipo === 'powerball') {
+      numerosTexto = numeros?.join(' - ') || ''
+      if (numerosExtra?.[0] != null) numerosTexto += ` ➕ ${numerosExtra[0]}`
+      if (multiplicador) numerosTexto += ` ✖️ ${multiplicador}x`
+    } else if (tipo === 'megamillions') {
+      numerosTexto = numeros?.join(' - ') || ''
+      if (numerosExtra?.[0] != null) numerosTexto += ` ➕ ${numerosExtra[0]}`
+    } else if (tipo === 'cash4life') {
+      numerosTexto = numeros?.join(' - ') || ''
+      if (numerosExtra?.[0] != null) numerosTexto += ` ➕ ${numerosExtra[0]}`
+    } else if (tipo === 'loto5plus') {
+      numerosTexto = numeros?.join(' - ') || ''
+      if (numerosExtra?.[0] != null) numerosTexto += ` ➕ ${numerosExtra[0]}`
+    } else if (tipo === 'jugamas') {
+      numerosTexto = numeros?.join(' - ') || ''
+      if (numerosExtra?.[0] != null) numerosTexto += ` ➕ ${numerosExtra[0]}`
     } else {
       numerosTexto = numeros?.join(' - ') || ''
-    }
-
-    // Extras según tipo
-    let extrasTexto = ''
-    if (tipo === 'powerball') {
-      if (numerosExtra?.[0] != null) extrasTexto += `\n🔴 PowerBall: ${numerosExtra[0]}`
-      if (multiplicador) extrasTexto += `\n✖️ Multiplicador: ${multiplicador}`
-    } else if (tipo === 'megamillions') {
-      if (numerosExtra?.[0] != null) extrasTexto += `\n⭐ Mega Ball: ${numerosExtra[0]}`
-    } else if (tipo === 'loto-loteka') {
-      if (numerosExtra?.[0] != null) extrasTexto += `\n🔴 Extra: ${numerosExtra[0]}`
-      if (numerosExtra?.[1] != null) extrasTexto += `\n⭐ Power: ${numerosExtra[1]}`
-    } else if (tipo === 'loto-leidsa') {
-      if (numerosExtra?.[0] != null) extrasTexto += `\n⭐ Más: ${numerosExtra[0]}`
-      if (numerosExtra?.[1] != null) extrasTexto += `\n✨ Super: ${numerosExtra[1]}`
-    } else if (tipo === 'cash4life') {
-      if (numerosExtra?.[0] != null) extrasTexto += `\n⭐ Cash Ball: ${numerosExtra[0]}`
-    } else if (tipo === 'loto5plus') {
-      if (numerosExtra?.[0] != null) extrasTexto += `\n⭐ Más: ${numerosExtra[0]}`
-    } else if (tipo === 'jugamas') {
-      if (numerosExtra?.[0] != null) extrasTexto += `\n⭐ Extra: ${numerosExtra[0]}`
     }
 
     const texto =
       `🎰 *${loteria_nombre.toUpperCase()}*\n` +
       `📋 ${sorteo}\n\n` +
-      `🔢 Resultados: ${numerosTexto}${extrasTexto}\n` +
+      `🔢 Resultados:\n${numerosTexto}\n` +
       `📅 Fecha: ${fechaFormateada}\n` +
       `🕐 Hora: ${hora}\n\n` +
-      `🌐 Ver más resultados en: https://quinielard.com`
+      `🌐 Ver más resultados en:\n➡️ https://quinielard.com`
     if (navigator.share) {
       try { await navigator.share({ title: 'QuinielaRD', text: texto }) } catch (_) {}
     } else {

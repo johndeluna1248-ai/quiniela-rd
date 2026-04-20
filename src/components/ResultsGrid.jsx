@@ -3,7 +3,8 @@
  * Grid de TARJETAS (LotteryCard) para todas las vistas.
  * Vista "todos" agrupa por lotería con SectionHeader.
  */
-import { useState, useEffect, useRef } from 'react'
+import { useState } from 'react'
+import AdBanner from './AdBanner'
 import LotteryCard from './LotteryCard'
 import { nombreGrupoPorOrden } from '../data/loteriesMock'
 import { LOGOS_EMPRESA } from '../utils/logos'
@@ -63,30 +64,6 @@ const SectionHeader = ({ orden, nombre }) => {
   )
 }
 
-const AdBanner = () => {
-  const adRef = useRef(null)
-  const pushed = useRef(false)
-
-  useEffect(() => {
-    if (!pushed.current && adRef.current && window.location.hostname !== 'localhost') {
-      try { (window.adsbygoogle = window.adsbygoogle || []).push({}) } catch (e) {}
-      pushed.current = true
-    }
-  }, [])
-
-  return (
-    <div className="w-full h-[100px] md:h-[250px] overflow-hidden rounded-xl bg-gray-100">
-      <ins className="adsbygoogle"
-        ref={adRef}
-        style={{ display: 'block', width: '100%', height: '100%' }}
-        data-ad-client="ca-pub-1957659439174188"
-        data-ad-slot="0000000000"
-        data-ad-format="horizontal"
-        data-full-width-responsive="true" />
-    </div>
-  )
-}
-
 const SinResultados = () => (
   <div className="flex flex-col items-center justify-center py-20 text-center col-span-full animate-fade-in-up">
     <div className="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center mb-4">
@@ -140,7 +117,7 @@ const ResultsGrid = ({ resultados, vista = 'quinielas', empresaLabel = null }) =
           <div key={grupo.orden}>
             <SectionHeader orden={grupo.orden} nombre={grupo.nombre} />
             <CardGrid items={grupo.items} fromLabel={grupo.nombre} />
-            {idx === 2 && <div style={{ marginTop: 20 }}><AdBanner /></div>}
+            {idx === 2 && <div style={{ marginTop: 20 }}><AdBanner slot="RESULTS_GRID" className="h-[100px] md:h-[250px]" /></div>}
           </div>
         ))}
       </div>

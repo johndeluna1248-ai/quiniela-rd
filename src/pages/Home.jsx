@@ -11,6 +11,7 @@
  */
 import { useState, useMemo, useEffect, useRef } from 'react'
 import { useSearchParams } from 'react-router-dom'
+import AdBanner from '../components/AdBanner'
 import DateFilter from '../components/DateFilter'
 import ResultsGrid from '../components/ResultsGrid'
 import SEO from '../components/SEO'
@@ -36,29 +37,6 @@ const horaAMin = (h) => {
   if (p === 'PM' && hr !== 12) hr += 12
   if (p === 'AM' && hr === 12) hr = 0
   return hr * 60 + min
-}
-
-const AdBanner = () => {
-  const adRef = useRef(null)
-  const pushed = useRef(false)
-
-  useEffect(() => {
-    if (!pushed.current && adRef.current && window.location.hostname !== 'localhost') {
-      try { (window.adsbygoogle = window.adsbygoogle || []).push({}) } catch (e) {}
-      pushed.current = true
-    }
-  }, [])
-
-  return (
-    <div className="w-full h-[50px] md:h-[90px] max-h-[50px] md:max-h-[90px] overflow-hidden rounded-xl bg-gray-100">
-      <ins className="adsbygoogle"
-        ref={adRef}
-        style={{ display: 'block', width: '100%', height: '100%' }}
-        data-ad-client="ca-pub-1957659439174188"
-        data-ad-slot="0000000000"
-        data-ad-format="horizontal" />
-    </div>
-  )
 }
 
 export const EMPRESA_LABELS = {
@@ -370,7 +348,7 @@ const Home = () => {
         </div>
       </div>
 
-      <AdBanner />
+      <AdBanner slot="HOME_TOP" className="h-[50px] md:h-[90px]" />
 
       <DateFilter
         fecha={fecha}        setFecha={setFecha}
@@ -407,7 +385,7 @@ const Home = () => {
 
       {empresa && !loading && <EmpresaInfoSection empresaChip={empresa} />}
 
-      <AdBanner />
+      <AdBanner slot="HOME_BOTTOM" className="h-[50px] md:h-[90px]" />
 
     </main>
   )
