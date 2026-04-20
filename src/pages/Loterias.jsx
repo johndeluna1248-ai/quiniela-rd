@@ -4,6 +4,7 @@
  * Incluye historia, sorteos ofrecidos, sedes y enlaces oficiales de cada una.
  */
 import { Link } from 'react-router-dom'
+import FAQSchema from '../components/FAQSchema'
 import SEO from '../components/SEO'
 
 // Array con toda la información de cada compañía de lotería
@@ -160,6 +161,7 @@ const Loterias = () => (
       description="Directorio completo de las loterías dominicanas: Nacional, Leidsa, Loto Real, Loteka, La Primera, LoteDom, La Suerte. Historia, sorteos, sedes y enlaces oficiales de cada compañía."
       canonical="https://quinielard.com/loterias"
     />
+    <FAQSchema faqs={preguntasFrecuentes} />
 
     {/* Header con enlace de regreso y título principal */}
     <div>

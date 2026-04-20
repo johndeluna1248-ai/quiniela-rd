@@ -5,6 +5,7 @@
  * Incluye premios, horarios, sección específica para la diáspora y FAQ.
  */
 import { Link } from 'react-router-dom'
+import FAQSchema from '../components/FAQSchema'
 import SEO from '../components/SEO'
 
 // Sorteos de Leidsa con detalles de premios
@@ -199,6 +200,7 @@ const OtrosSorteos = () => (
       description="Guía completa de sorteos especiales dominicanos (Loto, Super Kino TV, Mega Chances, Mega Lotto) y americanos (PowerBall, Mega Millions) con premios, horarios y reglas actualizadas."
       canonical="https://quinielard.com/otros-sorteos"
     />
+    <FAQSchema faqs={preguntasFrecuentes} />
 
     {/* Header con enlace de regreso y título principal */}
     <div>

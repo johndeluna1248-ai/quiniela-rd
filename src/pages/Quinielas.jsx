@@ -4,6 +4,7 @@
  * Incluye guía, tipos de jugadas, horarios, consejos y FAQ.
  */
 import { Link } from 'react-router-dom'
+import FAQSchema from '../components/FAQSchema'
 import SEO from '../components/SEO'
 
 // Array con todos los horarios de quinielas dominicanas
@@ -88,6 +89,7 @@ const Quinielas = () => (
       description="Guía completa de las quinielas dominicanas: cómo se juega, tipos de jugadas (quiniela, palé, tripleta, superpalé), horarios de Nacional, Leidsa, Loteka, La Primera, LoteDom y más. Resultados al instante."
       canonical="https://quinielard.com/quinielas"
     />
+    <FAQSchema faqs={preguntasFrecuentes} />
 
     {/* Header con enlace de regreso y título principal */}
     <div>
