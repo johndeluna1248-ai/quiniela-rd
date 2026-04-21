@@ -1,7 +1,7 @@
 # CLAUDE.md — QuinielaRD
 
 Memoria persistente del proyecto para Claude Code.
-Última actualización: 2026-04-20
+Última actualización: 2026-04-21 (sesión completa — FASE 3 SEO cerrada)
 
 ---
 
@@ -10,8 +10,8 @@ Memoria persistente del proyecto para Claude Code.
 - **Ruta activa**: `C:/Projects/quiniela-rd`
 - **Copia de respaldo** (no usar): `C:/Users/delun/OneDrive/Desktop/quiniela-rd`
 - **GitHub remote**: `origin main` (NO `master`)
-- **Deploy**: Cloudflare Pages
-- **URL producción**: QuinielaRD (dominio configurado en Cloudflare)
+- **Deploy**: Cloudflare Pages (`npx wrangler pages deploy dist`)
+- **URL producción**: `https://quinielard.com`
 
 ---
 
@@ -24,8 +24,9 @@ Memoria persistente del proyecto para Claude Code.
 | SEO | react-helmet-async |
 | Backend | Supabase (PostgreSQL) |
 | Scraper | n8n self-hosted |
-| Deploy | Cloudflare Pages (`npx wrangler pages deploy dist`) |
+| Deploy | Cloudflare Pages |
 | Anuncios | Google AdSense `ca-pub-1957659439174188` |
+| Email | Cloudflare Email Routing → `contacto@quinielard.com` |
 
 ---
 
@@ -38,6 +39,9 @@ npm run dev                          # localhost:5173
 # Producción
 npm run build                        # → dist/
 npx wrangler pages deploy dist       # deploy a Cloudflare Pages
+
+# og:image (regenerar si cambia el diseño)
+node tools/generate-og-image.mjs    # → public/og-image.png (1200x630)
 
 # Git
 git add -p                           # staging selectivo
@@ -58,6 +62,7 @@ src/
 ├── components/
 │   ├── AdBanner.jsx         # banner AdSense (null si ADSENSE_APPROVED=false)
 │   ├── BallsDisplay.jsx     # renderiza bolas por tipo (13 tipos)
+│   ├── Breadcrumbs.jsx      # breadcrumbs visuales + Schema.org BreadcrumbList
 │   ├── DateFilter.jsx       # filtro de fecha
 │   ├── FAQSchema.jsx        # JSON-LD FAQPage para Google Rich Results
 │   ├── Footer.jsx
@@ -66,8 +71,8 @@ src/
 │   ├── LotteryLogo.jsx
 │   ├── Modal.jsx
 │   ├── NumberBall.jsx
-│   ├── ResultsGrid.jsx      # grid de LotteryCards, agrupa por empresa en vista "todos"
-│   ├── SEO.jsx              # meta tags dinámicos via Helmet
+│   ├── ResultsGrid.jsx      # grid de LotteryCards, agrupa por empresa
+│   ├── SEO.jsx              # meta tags dinámicos via Helmet (incl. og:image)
 │   └── SorteoListRow.jsx    # (legacy, no usado en vistas principales)
 ├── config/
 │   └── adsense.js           # ADSENSE_APPROVED, ADSENSE_CLIENT, ADSENSE_SLOTS
@@ -91,118 +96,137 @@ src/
 └── utils/
     ├── logos.js             # LOGOS_EMPRESA{} y LOGOS_SORTEO{} — rutas de logos
     └── sorteoColors.js      # colores por empresa
+
+public/
+├── ads.txt                  # Google AdSense verification
+├── favicon.svg
+├── og-image.png             # 1200x630, ~280KB — generado con Puppeteer
+├── robots.txt
+└── sitemap.xml              # 6 URLs, lastmod 2026-04-21
+
+tools/                       # utilidades del proyecto (no se sirven al público)
+├── og-image.html            # fuente del diseño del og:image (editable)
+└── generate-og-image.mjs    # script Puppeteer para regenerar el PNG
 ```
 
 ---
 
 ## 🗃️ Base de Datos Supabase
 
-**Tabla**: `resultados_verificados`
+**Proyecto:** `wpxwtxfgwavoijyyivwl`
+**URL:** `https://wpxwtxfgwavoijyyivwl.supabase.co`
 
-**Columnas relevantes**:
-- `loteria` — nombre de la empresa (ej: `"Leidsa"`)
-- `sorteo` — nombre exacto del sorteo (case-sensitive, ver abajo)
-- `fecha` — formato `YYYY-MM-DD`
-- `numeros` — array de números ganadores
-- `tipo` — tipo de sorteo (`quiniela`, `loto-leidsa`, `kino`, etc.)
+### Tablas principales
 
-**Nombres exactos de sorteos (case-sensitive)**:
+#### `resultados_verificados` — producción ✅
+- **Filas:** ~2,640 (crece constantemente)
+- **RLS:** Activado
+- **Columnas clave:** `loteria`, `sorteo`, `fecha`, `numeros_principales`, `numeros_extras`, `multiplicador`, `estado_validacion`, `stable_key`, `prioridad`
+- **IMPORTANTE:** `numeros` y `tipo` NO existen → usar `numeros_principales` y `estado_validacion`
 
-| Empresa | Sorteo |
-|---------|--------|
-| Nacional | `Quiniela Lotería Nacional Tarde` |
-| Nacional | `Quiniela Lotería Nacional Noche` |
-| Nacional | `Juega + Pega +` |
-| Leidsa | `Quiniela Leidsa` |
-| Leidsa | `Loto Leidsa` |
-| Leidsa | `Loto Pool Leidsa` |
-| Leidsa | `Pega 3 Más` |
-| Leidsa | `Kino Leidsa` |
-| Real | `Quiniela Real` |
-| Real | `Loto Real` |
-| Real | `Loto Pool Real` |
-| Loteka | `Quiniela Loteka` |
-| Loteka | `Mega Chance` |
-| Loteka | `Loto Loteka` |
-| La Primera | `Quiniela La Primera Día` |
-| La Primera | `Quiniela La Primera Noche` |
-| La Primera | `Loto 5+ La Primera` |
-| La Suerte | `Quiniela La Suerte 12:30 PM` |
-| La Suerte | `Quiniela La Suerte 6:00 PM` |
-| Lotedom | `Quiniela LoteDom` |
-| Lotedom | `El Quemaíto Mayor` |
-| Americanas | `Quiniela New York Tarde` |
-| Americanas | `Quiniela New York Noche` |
-| Americanas | `Quiniela Florida Día` |
-| Americanas | `Quiniela Florida Tarde` |
-| Americanas | `Quiniela Florida Noche` |
-| Americanas | `Mega Millions` |
-| Americanas | `Powerball` ← "b" minúscula |
-| Americanas | `Cash 4 Life` |
-| King Lottery | `Quiniela King Lottery Día` |
-| King Lottery | `Quiniela King Lottery Noche` |
-| Anguila | `Quiniela Anguila 10:00 AM` |
-| Anguila | `Quiniela Anguila 1:00 PM` |
-| Anguila | `Quiniela Anguila 6:00 PM` |
-| Anguila | `Quiniela Anguila 9:00 PM` |
+#### `resultados_loterias` — raw scraper
+- **Filas:** ~3,276 | **RLS:** Desactivado | No consumida por el frontend
+
+**Flujo:** `resultados_loterias` → validación n8n → `resultados_verificados`
+
+**Nombres exactos de sorteos (case-sensitive):** Ver tabla completa en sesión anterior o en supabaseMapper.js. Los 35 sorteos incluyen Nacional (3), Leidsa (5), Real (3), Loteka (3), La Primera (3), La Suerte (2), Lotedom (2), Americanas (9), King Lottery (2), Anguila (4).
 
 ---
 
-## 🎯 Lógica de Datos
+## 🔍 SEO — FASE 3 COMPLETADA AL 100%
 
-### fetchQuinielas() — 20 sorteos de quiniela
-- Orden definido en `QUINIELAS_ORDEN` (supabaseMapper.js)
-- Hoy: fetch últimos resultados, color verde si `fecha === hoy`
-- Fecha pasada: fetch solo esa fecha, color gris siempre
+### Estado (verificado 2026-04-21)
 
-### fetchTodosSorteos() — 35 sorteos (quinielas + lotos)
-- Orden definido en `TODOS_SORTEOS_ORDEN` (supabaseMapper.js)
-- Misma lógica de colores que fetchQuinielas
+| Item | Estado |
+|------|--------|
+| Meta tags dinámicos (SEO.jsx) | ✅ |
+| Schema FAQPage (16 preguntas, 3 páginas) | ✅ Validado Google |
+| og:image 1200x630 (minimalista agresivo) | ✅ Validado Facebook |
+| Twitter Card `summary_large_image` | ✅ |
+| Schema BreadcrumbList (5 páginas) | ✅ Validado Google |
+| sitemap.xml actualizado (lastmod 2026-04-21) | ✅ |
+| robots.txt | ✅ |
+| Páginas enriquecidas (1400-1900 palabras) | ✅ 3 páginas |
 
-### fetchHistorial() — para SorteoDetail
-- Últimos N resultados de un sorteo específico
-- Color verde = hoy, gris = cualquier otra fecha
+### Componentes SEO
+- `SEO.jsx` — title, description, og:*, twitter:*, canonical + prop `image` con default
+- `FAQSchema.jsx` — JSON-LD FAQPage
+- `Breadcrumbs.jsx` — nav visual + JSON-LD BreadcrumbList
+- `public/og-image.png` — generado con Puppeteer desde `tools/og-image.html`
 
-### Orden de loterías (1–10)
-1. Nacional · 2. Leidsa · 3. Real · 4. Loteka · 5. La Primera
-6. La Suerte · 7. LoteDom · 8. Americanas · 9. King Lottery · 10. Anguila
+### og:image
+- **Diseño:** minimalista agresivo — eyebrow "RESULTADOS EN VIVO", título "QuinielaRD" 220px, línea "Nacional · Leidsa · Loteka · Real" 44px
+- **Regenerar:** `node tools/generate-og-image.mjs` (requiere `puppeteer` devDependency)
+- **URL producción:** `https://quinielard.com/og-image.png`
+
+### Breadcrumbs (Breadcrumbs.jsx)
+- Páginas integradas: `/quinielas`, `/loterias`, `/otros-sorteos`, `/privacidad`, `/terminos`
+- Reemplazó el link "← Volver al inicio" en todas las páginas
+- Acepta prop `items: [{ name, url? }]`
+
+### sitemap.xml — 6 URLs
+- `/` → priority 1.0, daily
+- `/quinielas`, `/loterias`, `/otros-sorteos` → priority 0.9, weekly
+- `/privacidad`, `/terminos` → priority 0.3, yearly
+
+### Pendientes SEO (próxima fase)
+- `/contacto` y `/sobre-nosotros` — para fortalecer AdSense
+- Google Analytics 4 — sin instalar
+- `<meta name="google-adsense-account">` — opcional (el script ya carga)
 
 ---
 
 ## 📺 Google AdSense
 
 - **Publisher ID**: `ca-pub-1957659439174188`
-- **ads.txt**: `public/ads.txt` → `google.com, pub-1957659439174188, DIRECT, f08c47fec0942fa0`
-- **Config**: `src/config/adsense.js`
-- **Activar**: cambiar `ADSENSE_APPROVED = false` → `true` y reemplazar slots con IDs reales
-- **Comportamiento**: `AdBanner` retorna `null` mientras `ADSENSE_APPROVED = false` (policy compliant)
+- **ads.txt**: `public/ads.txt` → `google.com, pub-1957659439174188, DIRECT, f08c47fec0942fa0` ✅
+- **Script**: cargado en `index.html` con `client=ca-pub-1957659439174188`
+- **Config**: `src/config/adsense.js` — `ADSENSE_APPROVED = false`
+- **Activar**: cambiar flag a `true` y reemplazar slots con IDs reales
+- **Estado revisión**: POSTERGADA — riesgo de bloqueo 6 meses tras 2 rechazos previos
+- **Estrategia**: fortalecer con /contacto y /sobre-nosotros antes de solicitar
 
 ---
 
-## 🔍 SEO
+## 📧 Contacto
 
-### Componentes SEO
-- `SEO.jsx` — meta tags dinámicos (title, description, og:*, canonical)
-- `FAQSchema.jsx` — JSON-LD `FAQPage` para Google Rich Results
-- `public/robots.txt` — permite todo excepto `/admin`
-- `public/sitemap.xml` — 7 URLs principales
-
-### Páginas enriquecidas (1400–1900 palabras)
-- `/quinielas` — guía completa, horarios, tipos de jugada, FAQ (6 preguntas)
-- `/otros-sorteos` — lotos, kino, americanas, jackpots, FAQ (5 preguntas)
-- `/loterias` — perfiles de 7 loterías dominicanas + 3 extranjeras, FAQ (5 preguntas)
-
-### Pendiente SEO
-- `og:image` no configurado (alta prioridad — mejora clicks en redes sociales)
-- `sitemap.xml` usa `lastmod: 2026-04-04` (actualizar después de cambios de contenido)
+- **Email**: `contacto@quinielard.com`
+- **Servicio**: Cloudflare Email Routing (gratis)
+- **Reenvío**: automático a `johndeluna1248@gmail.com`
+- **DNS**: MX records + SPF TXT configurados en Cloudflare
+- **Estado**: Verificado y funcional
+- **Visible en**: Footer (columna "Legal") en todas las páginas
+- **Crítico para AdSense**: Google puede contactar por este email
 
 ---
 
-## 🖼️ Logos
+## 🔧 MCPs Activos en Claude Code
 
-- **Ruta**: `src/assets/logos/` (22 archivos PNG)
-- **Mapa por empresa**: `LOGOS_EMPRESA` en `src/utils/logos.js`
-- **Mapa por sorteo**: `LOGOS_SORTEO` en `src/utils/logos.js`
+Configurados en `~/.claude.json` bajo `projects["C:/Projects/quiniela-rd"].mcpServers`
+
+| MCP | Herramientas | Notas |
+|-----|-------------|-------|
+| `n8n-mcp` | 21 | n8n self-hosted en easypanel |
+| `supabase` | 20 | Proyecto `wpxwtxfgwavoijyyivwl` |
+| `github` | 26 | Repo `johndeluna1248-ai/quiniela-rd` |
+| `cloudflare` | ~15 | Instalado 2026-04-21, token custom |
+
+**Total: ~82 herramientas disponibles**
+
+- **Backup pre-Cloudflare**: `~/.claude.json.backup-cloudflare-20260421`
+- **Cloudflare token permisos**: Pages (Edit), Workers Scripts/KV (Edit), Zone/DNS (Read/Edit), Cache Purge
+- **Nota n8n**: Existen v1 y v2 de "Loterías - Recopilador" activos — revisar duplicación
+
+---
+
+## 🎯 Lógica de Datos
+
+- `fetchQuinielas()` — 20 sorteos, orden en `QUINIELAS_ORDEN`
+- `fetchTodosSorteos()` — 35 sorteos, orden en `TODOS_SORTEOS_ORDEN`
+- `fetchHistorial()` — historial de un sorteo para SorteoDetail
+- Color verde = hoy (`fecha === hoyRD()`), gris = fecha pasada
+
+**Orden de loterías (1–10):** Nacional · Leidsa · Real · Loteka · La Primera · La Suerte · LoteDom · Americanas · King Lottery · Anguila
 
 ---
 
@@ -214,19 +238,36 @@ src/
 
 ---
 
-## 🐛 Bugs Conocidos / Pendientes
+## 🐛 Bugs Conocidos
 
-- Ajustar posición del badge "multiplicador" en Powerball (mover arriba levemente)
-- Testear: navegación en historial, botones "compartir"/"avisame", reload de página
+- Badge "multiplicador" en Powerball — ajustar posición (mover levemente hacia arriba)
+- Testear: navegación historial, botones "compartir"/"avisame", reload
 
 ---
 
-## 📦 Historial de Commits Recientes
+## 📦 Historial de Commits
 
 ```
-62394d1  Agregar Schema.org FAQPage (FAQSchema.jsx + 3 páginas)
-0b3a443  Enriquecer página /loterias
-bc52785  Enriquecer página /otros-sorteos + /quinielas
-678044a  Add ads.txt and refactor AdBanner component
-db5ef5f  Primer commit
+e38e29c  Breadcrumbs visuales + Schema.org BreadcrumbList (5 páginas)
+41d3746  Sitemap.xml: fechas 2026-04-21 + prioridades ajustadas
+e0603f6  og-image optimizado WhatsApp (línea loterías 44px)
+f99c63e  og-image inicial: generación Puppeteer + integración SEO.jsx
+e431982  CLAUDE.md con memoria persistente del proyecto
+62394d1  Schema.org FAQPage (FAQSchema.jsx + 3 páginas)
+0b3a443  /loterias enriquecida (~1900 palabras)
+bc52785  /otros-sorteos + /quinielas enriquecidas
+678044a  ads.txt + AdBanner refactor
+db5ef5f  Primer commit (v1.0)
 ```
+
+---
+
+## ✅ Exactitud del Documento
+
+Verificado contra la base de datos vía Supabase MCP el 2026-04-20.
+
+Columnas confirmadas en `resultados_verificados`:
+`id`, `stable_key`, `loteria`, `sorteo`, `fecha`, `numeros_principales`,
+`numeros_extras`, `multiplicador`, `estado_validacion`, `coincidencias`,
+`fuentes_total`, `fuentes_auditadas`, `adn_por_fuente`, `numeros_texto`,
+`prioridad`, `created_at`, `updated_at`
