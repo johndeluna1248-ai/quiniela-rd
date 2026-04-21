@@ -4,6 +4,7 @@
  * Incluye historia, sorteos ofrecidos, sedes y enlaces oficiales de cada una.
  */
 import { Link } from 'react-router-dom'
+import Breadcrumbs from '../components/Breadcrumbs'
 import FAQSchema from '../components/FAQSchema'
 import SEO from '../components/SEO'
 
@@ -163,11 +164,12 @@ const Loterias = () => (
     />
     <FAQSchema faqs={preguntasFrecuentes} />
 
-    {/* Header con enlace de regreso y título principal */}
+    {/* Header con breadcrumbs y título principal */}
     <div>
-      <Link to="/" className="inline-flex items-center gap-1.5 text-sm text-primary font-semibold hover:underline mb-4">
-        ← Volver al inicio
-      </Link>
+      <Breadcrumbs items={[
+        { name: 'Inicio', url: '/' },
+        { name: 'Loterías' }
+      ]} />
       <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900">
         Loterías Dominicanas: Historia, Sorteos y Compañías del País
       </h1>

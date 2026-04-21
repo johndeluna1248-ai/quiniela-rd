@@ -2,7 +2,7 @@
  * Privacidad.jsx
  * Política de Privacidad de QuinielaRD.
  */
-import { Link } from 'react-router-dom'
+import Breadcrumbs from '../components/Breadcrumbs'
 import SEO from '../components/SEO'
 
 const Privacidad = () => (
@@ -14,9 +14,10 @@ const Privacidad = () => (
     />
 
     <div>
-      <Link to="/" className="inline-flex items-center gap-1.5 text-sm text-primary font-semibold hover:underline mb-4">
-        ← Volver al inicio
-      </Link>
+      <Breadcrumbs items={[
+        { name: 'Inicio', url: '/' },
+        { name: 'Política de Privacidad' }
+      ]} />
       <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900">Política de Privacidad</h1>
       <p className="text-sm text-gray-500 mt-1">Última actualización: abril 2026</p>
     </div>

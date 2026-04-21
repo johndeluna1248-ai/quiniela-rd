@@ -4,6 +4,7 @@
  * Incluye guía, tipos de jugadas, horarios, consejos y FAQ.
  */
 import { Link } from 'react-router-dom'
+import Breadcrumbs from '../components/Breadcrumbs'
 import FAQSchema from '../components/FAQSchema'
 import SEO from '../components/SEO'
 
@@ -91,11 +92,12 @@ const Quinielas = () => (
     />
     <FAQSchema faqs={preguntasFrecuentes} />
 
-    {/* Header con enlace de regreso y título principal */}
+    {/* Header con breadcrumbs y título principal */}
     <div>
-      <Link to="/" className="inline-flex items-center gap-1.5 text-sm text-primary font-semibold hover:underline mb-4">
-        ← Volver al inicio
-      </Link>
+      <Breadcrumbs items={[
+        { name: 'Inicio', url: '/' },
+        { name: 'Quinielas' }
+      ]} />
       <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900">
         Quinielas Dominicanas: Resultados, Horarios y Guía Completa
       </h1>
