@@ -1,39 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Home - máxima prioridad, cambia cada día con nuevos resultados -->
   <url>
     <loc>https://quinielard.com/</loc>
-    <lastmod>2026-04-04</lastmod>
+    <lastmod>2026-04-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
+
+  <!-- Páginas informativas principales -->
   <url>
     <loc>https://quinielard.com/quinielas</loc>
-    <lastmod>2026-04-04</lastmod>
+    <lastmod>2026-04-21</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
-  <url>
-    <loc>https://quinielard.com/otros-sorteos</loc>
-    <lastmod>2026-04-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
+
   <url>
     <loc>https://quinielard.com/loterias</loc>
-    <lastmod>2026-04-04</lastmod>
+    <lastmod>2026-04-21</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
+
+  <url>
+    <loc>https://quinielard.com/otros-sorteos</loc>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Páginas legales - baja prioridad, rara vez cambian -->
   <url>
     <loc>https://quinielard.com/privacidad</loc>
-    <lastmod>2026-04-04</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
+
   <url>
     <loc>https://quinielard.com/terminos</loc>
-    <lastmod>2026-04-04</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
+
 </urlset>
