@@ -88,7 +88,9 @@ const CardGrid = ({ items, fromLabel }) => (
         resultado={r}
         fromLabel={fromLabel}
         className={`stagger-item ${cardSpan(r.tipo)}`}
-        style={{ animationDelay: `${i * 50}ms` }}
+        // Cap en 10 para que las cards más allá no tarden demasiado en aparecer.
+        // Con cascada de 110ms × 10 = 1100ms máximo de delay + 600ms de animación ≈ 1700ms total.
+        style={{ animationDelay: `${Math.min(i, 10) * 110}ms` }}
       />
     ))}
   </div>

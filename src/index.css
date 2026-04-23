@@ -80,12 +80,21 @@
 
 /* Staggered fade-in for grid items */
 .stagger-item {
-  animation: fadeInUp 0.4s ease-out both;
+  /* Curva easeOutExpo suave (arranque rápido, desaceleración elegante al final). */
+  animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(12px); }
+  from { opacity: 0; transform: translateY(24px); }
   to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Accesibilidad: respetar preferencia del usuario de reducir movimiento.
+   Desactiva la cascada de cards para usuarios con prefers-reduced-motion: reduce. */
+@media (prefers-reduced-motion: reduce) {
+  .stagger-item {
+    animation: none;
+  }
 }
 
 /* Custom scrollbar */
