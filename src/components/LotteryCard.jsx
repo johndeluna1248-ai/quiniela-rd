@@ -126,6 +126,11 @@ const LotteryCard = ({ resultado, className = '', fromLabel = null, style: stagg
       ? formatFecha(fechaNumeros)
       : `Último: ${formatFecha(fechaNumeros)}`
 
+  // Alcance estricto: solo las Quinielas tienen bolas grandes porque son el producto
+  // estrella de QuinielaRD. Pega 3, Mega Chance y el resto mantienen el default (48px)
+  // de BallsDisplay.
+  const ballSize = tipo === 'quiniela' ? 60 : undefined
+
   return (
     <>
       <div
@@ -186,6 +191,7 @@ const LotteryCard = ({ resultado, className = '', fromLabel = null, style: stagg
           <BallsDisplay
             tipo={tipo} numeros={numeros} numerosExtra={numerosExtra}
             multiplicador={multiplicador} isGray={!esVerde}
+            ballSize={ballSize}
           />
         </div>
 
