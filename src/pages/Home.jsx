@@ -301,6 +301,10 @@ const Home = () => {
 
   // Determine vista for ResultsGrid grouping
   const gridVista = (modo === 'todos' && !empresa) ? 'todos' : modo
+  // Mostrar banners divisores por compañía siempre que el usuario esté viendo
+  // múltiples compañías (sin filtro por empresa), tanto en Quinielas como en Todos.
+  // Con filtro activo sólo hay una compañía visible → no tiene sentido agrupar.
+  const agruparPorCompania = !empresa
   const empresaLabel = empresa ? (EMPRESA_LABELS[empresa] || empresa) : null
 
   const tituloSEO = `Quiniela de Hoy ${fechaHoyRD()} | QuinielaRD`
@@ -380,7 +384,12 @@ const Home = () => {
           </button>
         </div>
       ) : (
-        <ResultsGrid resultados={resultadosFiltrados} vista={gridVista} empresaLabel={empresaLabel} />
+        <ResultsGrid
+          resultados={resultadosFiltrados}
+          vista={gridVista}
+          empresaLabel={empresaLabel}
+          agruparPorCompania={agruparPorCompania}
+        />
       )}
 
       {empresa && !loading && <EmpresaInfoSection empresaChip={empresa} />}

@@ -94,13 +94,22 @@ const CardGrid = ({ items, fromLabel }) => (
   </div>
 )
 
-const ResultsGrid = ({ resultados, vista = 'quinielas', empresaLabel = null }) => {
+const ResultsGrid = ({
+  resultados,
+  vista = 'quinielas',
+  empresaLabel = null,
+  // Si true, agrupa los resultados por compañía y muestra el banner divisor
+  // (SectionHeader) aunque la vista no sea "todos". Usado por el tab Quinielas
+  // para replicar la separación visual por empresa.
+  agruparPorCompania = false,
+}) => {
   if (!resultados || resultados.length === 0) {
     return <div className="grid grid-cols-1"><SinResultados /></div>
   }
 
-  // Vista "todos": agrupar por lotería con SectionHeader + tarjetas
-  if (vista === 'todos') {
+  // Agrupar por compañía cuando la vista "todos" lo pida (comportamiento original)
+  // o cuando se solicite explícitamente vía prop (tab Quinielas sin filtro de empresa).
+  if (vista === 'todos' || agruparPorCompania) {
     const gruposMap = new Map()
     resultados.forEach((r) => {
       const key = r.loteria_orden
