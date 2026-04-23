@@ -1,7 +1,7 @@
 # CLAUDE.md — QuinielaRD
 
 Memoria persistente del proyecto para Claude Code.
-Última actualización: 2026-04-21 (sesión completa — FASE 3 SEO cerrada)
+Última actualización: 2026-04-23 (refinamiento visual — banners Quinielas, shadows, bolas 60px, stagger)
 
 ---
 
@@ -235,6 +235,33 @@ Configurados en `~/.claude.json` bajo `projects["C:/Projects/quiniela-rd"].mcpSe
 `quiniela`, `pega3`, `kino`, `loto-leidsa`, `loto-loteka`, `lotopool`,
 `loto-real`, `loto5plus`, `megamillions`, `powerball`, `cash4life`,
 `quemaito`, `jugamas`, `megachance`
+
+---
+
+## 🎨 Convenciones de UI
+
+### Cards (`LotteryCard`)
+- Elevación vía Tailwind: `shadow-card` + `hover:shadow-card-hover` (definidos en `tailwind.config.js` con tinte slate-900 transparente). NO usar `boxShadow` inline ni handlers JS de hover.
+- Borde: `1px solid rgba(15, 23, 42, 0.06)` + `borderLeft: 4px solid {color empresa}` (signature visual).
+- Lift de hover: `hover:-translate-y-1` (4px).
+
+### Bolas (`BallsDisplay`)
+- **Quinielas** (`tipo === 'quiniela'`): `ballSize=60` — pasado desde `LotteryCard`.
+- **Resto** (pega3, megachance, lotos, americanas, jugamas): `48px` default de la vista card.
+- **Kino**: `44px` propio. **Quemaíto**: `72px` propio. **SorteoDetail** (historial): `36px` hardcoded.
+- `fontSize` del número se ajusta automáticamente al tamaño (tabla en `BallsDisplay.jsx:46-51`).
+
+### Agrupación por compañía (`ResultsGrid`)
+- Prop `agruparPorCompania` (bool) → renderiza `SectionHeader` (banner con gradiente + logo) por cada `loteria_orden`.
+- Tab **Quinielas** y tab **Todos** agrupan cuando **no hay filtro por empresa**.
+- Filtro activo (`?empresa=leidsa`) → una sola compañía → no se agrupa.
+
+### Animación de entrada (stagger)
+- Clase: `.stagger-item` en `src/index.css`.
+- Delay: `Math.min(i, 10) * 110ms` (cap en i=10 para evitar esperas largas con muchas cards).
+- Duración `0.6s`, easing `cubic-bezier(0.22, 1, 0.36, 1)` (easeOutExpo), `translateY(24px)` → `0`.
+- Respeta `@media (prefers-reduced-motion: reduce)` → cards aparecen instantáneas.
+- **Importante**: la clase Tailwind `animate-fade-in-up` (usada en 17 sitios: páginas, DateFilter, Modal, loading states) es **independiente** — no modificar `tailwind.config.js` al afinar stagger.
 
 ---
 
