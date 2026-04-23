@@ -129,18 +129,23 @@ const LotteryCard = ({ resultado, className = '', fromLabel = null, style: stagg
   return (
     <>
       <div
+        // shadow-card / hover:shadow-card-hover viven en tailwind.config.js — un solo
+        // sitio de verdad para los valores de elevación (evita duplicar inline + handlers JS).
         className={`bg-white rounded-2xl p-5
+                   shadow-card hover:shadow-card-hover
                    transition-all duration-300 ease-out
-                   hover:-translate-y-0.5
+                   hover:-translate-y-1
                    flex flex-col gap-4 ${className}`}
         style={{
-          border: '1px solid #e5e7eb',
+          // Borde con tinte azul-oscuro (slate-900 @ 6%) en vez de gray-200 sólido:
+          // deja que la sombra haga el trabajo de separar la card del fondo
+          // sin competir visualmente con ella.
+          border: '1px solid rgba(15, 23, 42, 0.06)',
+          // borderLeft 4px con color de empresa se mantiene — es la signature
+          // visual que identifica cada lotería.
           borderLeft: `4px solid ${resolvedColor}`,
-          boxShadow: '0 4px 16px rgba(0,0,0,0.06)',
           ...staggerStyle,
         }}
-        onMouseEnter={(e) => { e.currentTarget.style.boxShadow = '0 12px 32px rgba(0,0,0,0.12)' }}
-        onMouseLeave={(e) => { e.currentTarget.style.boxShadow = '0 4px 16px rgba(0,0,0,0.06)' }}
       >
         {/* Header */}
         <div className="flex items-start gap-3">

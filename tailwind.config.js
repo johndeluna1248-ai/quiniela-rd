@@ -39,8 +39,9 @@ export default {
         'card-lg': '20px',
       },
       boxShadow: {
-        'card': '0 4px 16px rgba(0,0,0,0.06)',
-        'card-hover': '0 12px 32px rgba(0,0,0,0.12)',
+        // Shadows con tinte azul-oscuro (slate-900) para integrarse con el fondo frío del sitio
+        'card':       '0 6px 20px rgba(15, 23, 42, 0.08)',
+        'card-hover': '0 16px 40px rgba(15, 23, 42, 0.14)',
         'glass': '0 8px 32px rgba(31,38,135,0.08)',
         'glow': '0 0 20px rgba(30,58,138,0.15)',
       },
