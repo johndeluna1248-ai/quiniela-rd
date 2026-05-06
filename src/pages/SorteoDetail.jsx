@@ -9,6 +9,7 @@ import { useState, useEffect } from 'react'
 import { useParams, useNavigate, useLocation } from 'react-router-dom'
 import BallsDisplay from '../components/BallsDisplay'
 import LotteryLogo from '../components/LotteryLogo'
+import SEO from '../components/SEO'
 import { fetchHistorial } from '../lib/fetchQuinielas'
 import { hoyRD } from '../lib/supabaseMapper'
 import { SORTEO_INFO, SORTEO_NAME_TO_KEY, EMPRESA_INFO, EMPRESA_ID_TO_KEY } from '../data/loteriasInfo'
@@ -115,7 +116,20 @@ const SorteoDetail = () => {
     )
   }
 
+  const seoTitle = info
+    ? `${info.card_nombre ?? info.loteria_nombre} — ${sorteoName} | QuinielaRD`
+    : `${sorteoName} — Resultados y Historial | QuinielaRD`
+  const seoDesc = info
+    ? `Consulta los últimos resultados del ${sorteoName} de ${info.card_nombre ?? info.loteria_nombre}. Historial de números ganadores actualizados en tiempo real.`
+    : `Consulta los últimos resultados y el historial de números ganadores del ${sorteoName} en QuinielaRD.`
+
   return (
+    <>
+    <SEO
+      title={seoTitle}
+      description={seoDesc}
+      canonical={`https://quinielard.com/sorteo/${encodeURIComponent(sorteoName)}`}
+    />
     <div style={{ backgroundColor: '#f8f9fc', minHeight: 'calc(100vh - 64px)' }}>
       <div className="max-w-2xl mx-auto px-4 sm:px-6 py-8">
 
@@ -324,6 +338,7 @@ const SorteoDetail = () => {
 
       </div>
     </div>
+    </>
   )
 }
 

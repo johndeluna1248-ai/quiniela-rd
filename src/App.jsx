@@ -13,6 +13,8 @@ import Terminos from './pages/Terminos'
 import Quinielas from './pages/Quinielas'
 import OtrosSorteos from './pages/OtrosSorteos'
 import Loterias from './pages/Loterias'
+import Contacto from './pages/Contacto'
+import SobreNosotros from './pages/SobreNosotros'
 
 const ScrollToTop = () => {
   const { pathname, search } = useLocation()
@@ -34,6 +36,8 @@ const App = () => (
           <Route path="/quinielas" element={<Quinielas />} />
           <Route path="/otros-sorteos" element={<OtrosSorteos />} />
           <Route path="/loterias" element={<Loterias />} />
+          <Route path="/contacto" element={<Contacto />} />
+          <Route path="/sobre-nosotros" element={<SobreNosotros />} />
         </Routes>
       </div>
       <Footer />

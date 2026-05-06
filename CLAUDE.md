@@ -1,14 +1,14 @@
 # CLAUDE.md — QuinielaRD
 
 Memoria persistente del proyecto para Claude Code.
-Última actualización: 2026-04-23 (refinamiento visual — banners Quinielas, shadows, bolas 60px, stagger)
+Última actualización: 2026-05-06 (creación sub-agentes especializados, corrección ruta Mac Mini)
 
 ---
 
 ## 🗂️ Identificación del Proyecto
 
-- **Ruta activa**: `C:/Projects/quiniela-rd`
-- **Copia de respaldo** (no usar): `C:/Users/delun/OneDrive/Desktop/quiniela-rd`
+- **Ruta activa (Mac Mini)**: `~/Proyectos/quiniela-rd`
+- **Ruta antigua (laptop Windows — ya no usar)**: `C:/Projects/quiniela-rd`
 - **GitHub remote**: `origin main` (NO `master`)
 - **Deploy**: Cloudflare Pages (`npx wrangler pages deploy dist`)
 - **URL producción**: `https://quinielard.com`
@@ -298,3 +298,19 @@ Columnas confirmadas en `resultados_verificados`:
 `numeros_extras`, `multiplicador`, `estado_validacion`, `coincidencias`,
 `fuentes_total`, `fuentes_auditadas`, `adn_por_fuente`, `numeros_texto`,
 `prioridad`, `created_at`, `updated_at`
+
+---
+
+## 🤖 Sub-agentes JAD para este proyecto
+
+Cuando JAD recibe una tarea de QuinielaRD, identificar el sub-agente correcto:
+
+| Tipo de tarea | Sub-agente |
+|---------------|-----------|
+| Bug visual, componente, página nueva, UI/UX | `quinielard-frontend` |
+| Datos faltantes, auditoría Supabase, estadísticas | `quinielard-datos` |
+| Scraper roto, nueva fuente, workflow n8n | `quinielard-scraper` |
+| Meta tags, schemas, AdSense, contenido SEO | `quinielard-seo` |
+| Build, git, deploy Cloudflare Pages | `quinielard-deploy` |
+
+**Especificaciones completas:** `~/Desktop/JAD Asisten/04-sub-agentes/activos/quinielard-*.md`

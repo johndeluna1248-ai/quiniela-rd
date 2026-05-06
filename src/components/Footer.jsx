@@ -37,7 +37,8 @@ const Footer = () => (
             <span className="text-xs font-semibold uppercase tracking-wider text-blue-300 mb-1">Legal</span>
             <Link to="/privacidad" className="text-blue-200 hover:text-white transition-colors">Privacidad</Link>
             <Link to="/terminos" className="text-blue-200 hover:text-white transition-colors">Términos de Uso</Link>
-            <a href="mailto:contacto@quinielard.com" className="text-blue-200 hover:text-white transition-colors">Contacto</a>
+            <Link to="/sobre-nosotros" className="text-blue-200 hover:text-white transition-colors">Sobre Nosotros</Link>
+            <Link to="/contacto" className="text-blue-200 hover:text-white transition-colors">Contacto</Link>
           </div>
         </div>
       </div>

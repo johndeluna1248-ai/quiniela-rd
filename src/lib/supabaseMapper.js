@@ -257,9 +257,14 @@ export function mapSupabaseRow(row, hoyStr, nowMin, fechaConsulta) {
     id: row.loteria.toLowerCase(), color: '#6b7280', siglas: '??', orden: 99,
   }
 
-  const numeros = row.numeros_principales ?? []
-  const extras  = (row.numeros_extras && row.numeros_extras.length > 0) ? row.numeros_extras : null
+  let numeros = row.numeros_principales ?? []
+  let extras  = (row.numeros_extras && row.numeros_extras.length > 0) ? row.numeros_extras : null
   const mult    = (row.multiplicador && row.multiplicador !== 'null') ? row.multiplicador : null
+
+  // Juega+Pega+ tiene los campos invertidos en BD: extras=4 principales, principales=1 bola bonus
+  if (row.sorteo === 'Juega + Pega +' && extras?.length === 4 && numeros.length === 1) {
+    ;[numeros, extras] = [extras, numeros]
+  }
 
   const tipo       = detectTipo(row.sorteo, numeros)
   const loteriaId  = detectLoteriaId(row.loteria, row.sorteo)
