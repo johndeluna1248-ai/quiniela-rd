@@ -18,7 +18,15 @@ import SobreNosotros from './pages/SobreNosotros'
 
 const ScrollToTop = () => {
   const { pathname, search } = useLocation()
-  useEffect(() => { window.scrollTo(0, 0) }, [pathname, search])
+  useEffect(() => {
+    window.scrollTo(0, 0)
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'page_view', {
+        page_path: pathname + search,
+        page_title: document.title,
+      })
+    }
+  }, [pathname, search])
   return null
 }
 
