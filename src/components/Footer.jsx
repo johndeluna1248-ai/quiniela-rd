@@ -1,56 +1,105 @@
 /**
  * Footer.jsx
- * Pie de página profesional con gradiente, links y branding.
+ * Pie de página — QuinielaRD brand v2.0
  */
 import { Link } from 'react-router-dom'
 
 const Footer = () => (
-  <footer className="mt-auto text-white"
-    style={{ background: 'linear-gradient(135deg, #1e3a8a 0%, #1e3050 100%)' }}>
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+  <footer className="mt-auto border-t-4 border-amber-400"
+          style={{ background: 'linear-gradient(90deg, #1B357C 0%, #0D1F42 100%)' }}>
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
 
       {/* Top section */}
-      <div className="flex flex-col sm:flex-row items-center sm:items-start justify-between gap-6 mb-8">
+      <div className="flex flex-col sm:flex-row items-center sm:items-start justify-between gap-8 mb-8">
 
         {/* Brand */}
-        <div className="flex flex-col items-center sm:items-start gap-2">
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
-              <span className="font-black text-primary text-sm leading-none">Q</span>
+        <div className="flex flex-col items-center sm:items-start gap-3">
+          <div className="flex items-center gap-3">
+            <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center font-black text-lg sm:text-xl flex-shrink-0"
+                 style={{ backgroundColor: '#FBBF24', color: '#0D1F42', boxShadow: '0 2px 8px rgba(251,191,36,0.3)' }}>
+              Q
             </div>
-            <span className="font-black text-lg tracking-tight">QuinielaRD</span>
+            <span className="text-2xl sm:text-3xl leading-none"
+                  style={{ fontFamily: 'var(--font-display)' }}>
+              <span className="text-white">Quiniela</span>
+              <span style={{ color: 'var(--color-amber-400)' }}>RD</span>
+            </span>
           </div>
-          <p className="text-sm text-blue-200 max-w-xs text-center sm:text-left leading-relaxed">
+          <p className="text-sm max-w-xs text-center sm:text-left leading-relaxed"
+             style={{ color: 'var(--color-blue-gray)' }}>
             Tu fuente confiable de resultados de loterías dominicanas en tiempo real.
           </p>
         </div>
 
         {/* Quick links */}
-        <div className="flex gap-8 text-sm">
-          <div className="flex flex-col gap-2">
-            <span className="text-xs font-semibold uppercase tracking-wider text-blue-300 mb-1">Sorteos</span>
-            <Link to="/quinielas" className="text-blue-200 hover:text-white transition-colors">Quinielas</Link>
-            <Link to="/otros-sorteos" className="text-blue-200 hover:text-white transition-colors">Otros Sorteos</Link>
-            <Link to="/loterias" className="text-blue-200 hover:text-white transition-colors">Loterías</Link>
+        <div className="flex gap-10 sm:gap-12 text-sm">
+          <div className="flex flex-col">
+            <span className="text-xs font-semibold uppercase mb-3"
+                  style={{ color: 'var(--color-amber-400)', letterSpacing: '0.15em' }}>
+              Sorteos
+            </span>
+            <Link to="/" className="mt-2 transition-colors"
+                  style={{ color: 'var(--color-blue-gray)' }}
+                  onMouseEnter={e => e.target.style.color = '#fff'}
+                  onMouseLeave={e => e.target.style.color = 'var(--color-blue-gray)'}>
+              Quinielas
+            </Link>
+            <Link to="/?modo=todos" className="mt-2 transition-colors"
+                  style={{ color: 'var(--color-blue-gray)' }}
+                  onMouseEnter={e => e.target.style.color = '#fff'}
+                  onMouseLeave={e => e.target.style.color = 'var(--color-blue-gray)'}>
+              Otros Sorteos
+            </Link>
+            <Link to="/quinielas" className="mt-2 transition-colors"
+                  style={{ color: 'var(--color-blue-gray)' }}
+                  onMouseEnter={e => e.target.style.color = '#fff'}
+                  onMouseLeave={e => e.target.style.color = 'var(--color-blue-gray)'}>
+              Loterías
+            </Link>
           </div>
-          <div className="flex flex-col gap-2">
-            <span className="text-xs font-semibold uppercase tracking-wider text-blue-300 mb-1">Legal</span>
-            <Link to="/privacidad" className="text-blue-200 hover:text-white transition-colors">Privacidad</Link>
-            <Link to="/terminos" className="text-blue-200 hover:text-white transition-colors">Términos de Uso</Link>
-            <Link to="/sobre-nosotros" className="text-blue-200 hover:text-white transition-colors">Sobre Nosotros</Link>
-            <Link to="/contacto" className="text-blue-200 hover:text-white transition-colors">Contacto</Link>
+          <div className="flex flex-col">
+            <span className="text-xs font-semibold uppercase mb-3"
+                  style={{ color: 'var(--color-amber-400)', letterSpacing: '0.15em' }}>
+              Sitio
+            </span>
+            <Link to="/sobre-nosotros" className="mt-2 transition-colors"
+                  style={{ color: 'var(--color-blue-gray)' }}
+                  onMouseEnter={e => e.target.style.color = '#fff'}
+                  onMouseLeave={e => e.target.style.color = 'var(--color-blue-gray)'}>
+              Sobre Nosotros
+            </Link>
+            <Link to="/contacto" className="mt-2 transition-colors"
+                  style={{ color: 'var(--color-blue-gray)' }}
+                  onMouseEnter={e => e.target.style.color = '#fff'}
+                  onMouseLeave={e => e.target.style.color = 'var(--color-blue-gray)'}>
+              Contacto
+            </Link>
+            <Link to="/privacidad" className="mt-2 transition-colors"
+                  style={{ color: 'var(--color-blue-gray)' }}
+                  onMouseEnter={e => e.target.style.color = '#fff'}
+                  onMouseLeave={e => e.target.style.color = 'var(--color-blue-gray)'}>
+              Privacidad
+            </Link>
+            <Link to="/terminos" className="mt-2 transition-colors"
+                  style={{ color: 'var(--color-blue-gray)' }}
+                  onMouseEnter={e => e.target.style.color = '#fff'}
+                  onMouseLeave={e => e.target.style.color = 'var(--color-blue-gray)'}>
+              Términos de Uso
+            </Link>
           </div>
         </div>
       </div>
 
-      {/* Divider */}
-      <div className="border-t border-white/10 pt-6">
+      {/* Divider + disclaimer */}
+      <div className="border-t border-white/10 pt-4 pb-0">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-xs text-blue-300 text-center sm:text-left leading-relaxed">
+          <p className="text-xs text-center sm:text-left leading-relaxed"
+             style={{ color: 'rgba(185, 197, 217, 0.7)' }}>
             QuinielaRD no es un sitio oficial de ninguna lotería. Los resultados son
             recopilados de fuentes públicas con fines informativos.
           </p>
-          <p className="text-xs text-blue-400 whitespace-nowrap">
+          <p className="text-xs whitespace-nowrap"
+             style={{ color: 'rgba(185, 197, 217, 0.7)' }}>
             &copy; 2026 QuinielaRD
           </p>
         </div>

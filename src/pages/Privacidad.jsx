@@ -18,14 +18,14 @@ const Privacidad = () => (
         { name: 'Inicio', url: '/' },
         { name: 'Política de Privacidad' }
       ]} />
-      <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900">Política de Privacidad</h1>
+      <h1 className="text-2xl sm:text-3xl font-extrabold title-branded">Política de Privacidad</h1>
       <p className="text-sm text-gray-500 mt-1">Última actualización: abril 2026</p>
     </div>
 
     <div className="bg-white rounded-2xl border border-gray-200 shadow-card p-6 sm:p-8 space-y-6 text-gray-700 text-sm leading-relaxed">
 
       <section className="space-y-2">
-        <h2 className="text-lg font-bold text-gray-900">1. Información General</h2>
+        <h2 className="text-lg font-bold title-navy">1. Información General</h2>
         <p>
           QuinielaRD (<strong>quinielard.com</strong>) es un sitio web informativo que muestra
           resultados de loterías dominicanas recopilados de fuentes públicas. No somos un sitio
@@ -34,7 +34,7 @@ const Privacidad = () => (
       </section>
 
       <section className="space-y-2">
-        <h2 className="text-lg font-bold text-gray-900">2. Datos que Recopilamos</h2>
+        <h2 className="text-lg font-bold title-navy">2. Datos que Recopilamos</h2>
         <p>QuinielaRD no solicita registro ni recopila datos personales directamente. Sin embargo, podemos recopilar de forma automática:</p>
         <ul className="list-disc pl-5 space-y-1">
           <li>Información técnica del navegador (tipo, versión, idioma)</li>
@@ -44,7 +44,7 @@ const Privacidad = () => (
       </section>
 
       <section className="space-y-2">
-        <h2 className="text-lg font-bold text-gray-900">3. Cookies y Tecnologías de Seguimiento</h2>
+        <h2 className="text-lg font-bold title-navy">3. Cookies y Tecnologías de Seguimiento</h2>
         <p>Utilizamos cookies propias y de terceros para:</p>
         <ul className="list-disc pl-5 space-y-1">
           <li>Garantizar el correcto funcionamiento del sitio</li>
@@ -54,7 +54,7 @@ const Privacidad = () => (
       </section>
 
       <section className="space-y-2">
-        <h2 className="text-lg font-bold text-gray-900">4. Google AdSense y Publicidad</h2>
+        <h2 className="text-lg font-bold title-navy">4. Google AdSense y Publicidad</h2>
         <p>
           Este sitio utiliza <strong>Google AdSense</strong> para mostrar anuncios. Google y sus
           socios publicitarios pueden utilizar cookies para mostrar anuncios basados en visitas
@@ -68,7 +68,7 @@ const Privacidad = () => (
       </section>
 
       <section className="space-y-2">
-        <h2 className="text-lg font-bold text-gray-900">5. Uso de la Información</h2>
+        <h2 className="text-lg font-bold title-navy">5. Uso de la Información</h2>
         <p>La información recopilada se utiliza exclusivamente para:</p>
         <ul className="list-disc pl-5 space-y-1">
           <li>Mejorar la experiencia del usuario en el sitio</li>
@@ -78,7 +78,7 @@ const Privacidad = () => (
       </section>
 
       <section className="space-y-2">
-        <h2 className="text-lg font-bold text-gray-900">6. Terceros</h2>
+        <h2 className="text-lg font-bold title-navy">6. Terceros</h2>
         <p>
           No vendemos, intercambiamos ni transferimos información personal a terceros. Esto no
           incluye socios de confianza que nos ayudan a operar el sitio (como Google), siempre que
@@ -87,7 +87,7 @@ const Privacidad = () => (
       </section>
 
       <section className="space-y-2">
-        <h2 className="text-lg font-bold text-gray-900">7. Cambios a esta Política</h2>
+        <h2 className="text-lg font-bold title-navy">7. Cambios a esta Política</h2>
         <p>
           Nos reservamos el derecho de actualizar esta política en cualquier momento. Los cambios
           se publicarán en esta misma página con la fecha de actualización correspondiente.
@@ -95,7 +95,7 @@ const Privacidad = () => (
       </section>
 
       <section className="space-y-2">
-        <h2 className="text-lg font-bold text-gray-900">8. Contacto</h2>
+        <h2 className="text-lg font-bold title-navy">8. Contacto</h2>
         <p>
           Si tienes preguntas sobre esta política de privacidad, puedes contactarnos en:{' '}
           <a href="mailto:contacto@quinielard.com" className="text-primary hover:underline font-medium">

@@ -170,7 +170,7 @@ const Loterias = () => (
         { name: 'Inicio', url: '/' },
         { name: 'Loterías' }
       ]} />
-      <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900">
+      <h1 className="text-2xl sm:text-3xl font-extrabold title-branded">
         Loterías Dominicanas: Historia, Sorteos y Compañías del País
       </h1>
     </div>
@@ -187,7 +187,7 @@ const Loterias = () => (
 
     {/* Sección: Qué son las loterías dominicanas */}
     <section className="rounded-2xl border border-gray-200 shadow-card bg-white p-6 space-y-3">
-      <h2 className="text-xl font-bold text-gray-900">¿Qué son las Loterías Dominicanas?</h2>
+      <h2 className="text-xl font-bold title-branded title-branded-sm">¿Qué son las Loterías Dominicanas?</h2>
       <p className="text-sm text-gray-700 leading-relaxed">
         Las loterías dominicanas son empresas (públicas y privadas) autorizadas por el Estado para operar juegos de azar. Todas están reguladas por la <strong>Ley 29-06 sobre Juegos de Azar</strong> y supervisadas por el Ministerio de Hacienda a través de la Dirección General de Casinos y Juegos de Azar.
       </p>
@@ -254,7 +254,7 @@ const Loterias = () => (
 
     {/* Sección: Loterías extranjeras */}
     <section className="rounded-2xl border border-gray-200 shadow-card bg-white p-6 space-y-4">
-      <h2 className="text-xl font-bold text-gray-900">Loterías Extranjeras que Publicamos</h2>
+      <h2 className="text-xl font-bold title-branded title-branded-sm">Loterías Extranjeras que Publicamos</h2>
       {/* Aviso sobre las loterías extranjeras */}
       <div className="bg-blue-50 border-l-4 border-blue-500 rounded-lg p-4">
         <p className="text-xs text-gray-800 leading-relaxed">
@@ -278,7 +278,7 @@ const Loterias = () => (
 
     {/* Sección: Preguntas Frecuentes */}
     <section className="rounded-2xl border border-gray-200 shadow-card bg-white p-6 space-y-4">
-      <h2 className="text-xl font-bold text-gray-900">Preguntas Frecuentes sobre las Loterías</h2>
+      <h2 className="text-xl font-bold title-branded title-branded-sm">Preguntas Frecuentes sobre las Loterías</h2>
       <div className="space-y-3">
         {preguntasFrecuentes.map((faq, i) => (
           <div key={i} className="bg-gray-50 rounded-xl p-4">

@@ -14,14 +14,14 @@ const SobreNosotros = () => (
         { name: 'Inicio', url: '/' },
         { name: 'Sobre Nosotros' }
       ]} />
-      <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900">Sobre Nosotros</h1>
+      <h1 className="text-2xl sm:text-3xl font-extrabold title-branded">Sobre Nosotros</h1>
       <p className="text-sm text-gray-500 mt-1">Conoce QuinielaRD</p>
     </div>
 
     <div className="bg-white rounded-2xl border border-gray-200 shadow-card p-6 sm:p-8 space-y-6 text-gray-700 text-sm leading-relaxed">
 
       <section className="space-y-2">
-        <h2 className="text-lg font-bold text-gray-900">¿Qué es QuinielaRD?</h2>
+        <h2 className="text-lg font-bold title-navy">¿Qué es QuinielaRD?</h2>
         <p>
           <strong>QuinielaRD</strong> es un sitio web dominicano que consolida los resultados de
           las principales loterías del país en un solo lugar. Nació con el objetivo de ofrecer una
@@ -31,7 +31,7 @@ const SobreNosotros = () => (
       </section>
 
       <section className="space-y-3">
-        <h2 className="text-lg font-bold text-gray-900">¿Qué loterías cubrimos?</h2>
+        <h2 className="text-lg font-bold title-navy">¿Qué loterías cubrimos?</h2>
         <p>
           Publicamos <strong>33 sorteos</strong> de las principales loterías dominicanas e internacionales:
         </p>
@@ -59,7 +59,7 @@ const SobreNosotros = () => (
       </section>
 
       <section className="space-y-2">
-        <h2 className="text-lg font-bold text-gray-900">¿Cómo obtenemos los resultados?</h2>
+        <h2 className="text-lg font-bold title-navy">¿Cómo obtenemos los resultados?</h2>
         <p>
           Los resultados son recopilados automáticamente de las fuentes oficiales públicas de cada
           lotería mediante sistemas automatizados. Esto nos permite publicarlos poco después de que
@@ -69,7 +69,7 @@ const SobreNosotros = () => (
       </section>
 
       <section className="space-y-2">
-        <h2 className="text-lg font-bold text-gray-900">Nuestra misión</h2>
+        <h2 className="text-lg font-bold title-navy">Nuestra misión</h2>
         <p>
           Ser la referencia más confiable y accesible para los dominicanos que siguen los resultados
           de loterías. Mantenemos el sitio simple, rápido y sin necesidad de registro ni datos
@@ -78,7 +78,7 @@ const SobreNosotros = () => (
       </section>
 
       <section className="space-y-2">
-        <h2 className="text-lg font-bold text-gray-900">Aviso legal</h2>
+        <h2 className="text-lg font-bold title-navy">Aviso legal</h2>
         <p>
           QuinielaRD no es un sitio oficial de ninguna lotería ni empresa relacionada. No vendemos
           boletos, participaciones ni garantizamos la exactitud de los resultados mostrados. La

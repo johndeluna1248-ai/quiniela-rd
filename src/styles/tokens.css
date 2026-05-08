@@ -1,0 +1,76 @@
+/* ═══════════════════════════════════════
+   QUINIELARD DESIGN TOKENS v2.0
+   Identidad visual basada en og:image
+   ═══════════════════════════════════════ */
+
+:root {
+  /* ─── PALETA NAVY (azules) ─── */
+  --color-navy-darkest: #0D1F42;
+  --color-navy-base:    #122859;
+  --color-navy-light:   #1B357C;
+
+  /* ─── PALETA AMBER (dorado) ─── */
+  --color-amber-400:    #FBBF24;
+  --color-amber-500:    #F59E0B;  /* hover/active */
+
+  /* ─── NEUTROS ─── */
+  --color-white:        #FFFFFF;
+  --color-blue-gray:    #B9C5D9;  /* texto secundario sobre navy */
+  --color-text-dark:    #122859;  /* títulos sobre blanco - ya NO negro */
+  --color-text-body:    #374151;  /* body text */
+
+  /* ─── GRADIENTES OFICIALES ─── */
+  --gradient-brand: linear-gradient(90deg, #0D1F42 0%, #1B357C 100%);
+  --gradient-amber-underline: linear-gradient(
+    90deg,
+    #FBBF24 0%,
+    rgba(251, 191, 36, 0.3) 70%,
+    transparent 100%
+  );
+
+  /* ─── TIPOGRAFÍA ─── */
+  --font-display: 'Archivo Black', system-ui, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* ─── BORDES DECORATIVOS (estilo og:image) ─── */
+  --border-amber-decorative: 8px solid var(--color-amber-400);
+}
+
+/* ═══════════════════════════════════════
+   UTILITIES DE MARCA
+   ═══════════════════════════════════════ */
+
+/* Título con subrayado amber decorativo */
+.title-branded {
+  color: var(--color-text-dark); /* navy en vez de negro */
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+}
+
+.title-branded::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--color-amber-400) 0%,
+    var(--color-amber-400) 40%,
+    rgba(251, 191, 36, 0.4) 70%,
+    transparent 100%
+  );
+  border-radius: 2px;
+}
+
+/* Variante más sutil (para H2/H3) */
+.title-branded-sm::after {
+  height: 3px;
+}
+
+/* Título solo con color navy (sin subrayado) - para páginas con muchos H2s */
+.title-navy {
+  color: var(--color-text-dark);
+}

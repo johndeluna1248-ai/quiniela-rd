@@ -19,14 +19,14 @@ const Terminos = () => (
         { name: 'Inicio', url: '/' },
         { name: 'Términos y Condiciones' }
       ]} />
-      <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900">Términos de Uso</h1>
+      <h1 className="text-2xl sm:text-3xl font-extrabold title-branded">Términos de Uso</h1>
       <p className="text-sm text-gray-500 mt-1">Última actualización: abril 2026</p>
     </div>
 
     <div className="bg-white rounded-2xl border border-gray-200 shadow-card p-6 sm:p-8 space-y-6 text-gray-700 text-sm leading-relaxed">
 
       <section className="space-y-2">
-        <h2 className="text-lg font-bold text-gray-900">1. Aceptación de los Términos</h2>
+        <h2 className="text-lg font-bold title-navy">1. Aceptación de los Términos</h2>
         <p>
           Al acceder y utilizar QuinielaRD (<strong>quinielard.com</strong>), aceptas cumplir con
           estos términos de uso. Si no estás de acuerdo con alguno de ellos, te pedimos que no
@@ -35,7 +35,7 @@ const Terminos = () => (
       </section>
 
       <section className="space-y-2">
-        <h2 className="text-lg font-bold text-gray-900">2. Naturaleza del Servicio</h2>
+        <h2 className="text-lg font-bold title-navy">2. Naturaleza del Servicio</h2>
         <p>
           QuinielaRD es un sitio web informativo que muestra resultados de loterías dominicanas
           recopilados de fuentes públicas. <strong>No somos un sitio oficial</strong> de ninguna
@@ -49,7 +49,7 @@ const Terminos = () => (
       </section>
 
       <section className="space-y-2">
-        <h2 className="text-lg font-bold text-gray-900">3. Exactitud de la Información</h2>
+        <h2 className="text-lg font-bold title-navy">3. Exactitud de la Información</h2>
         <p>
           Hacemos nuestro mejor esfuerzo para mostrar resultados correctos y actualizados. Sin
           embargo, los resultados mostrados son de carácter informativo y <strong>no tienen
@@ -59,7 +59,7 @@ const Terminos = () => (
       </section>
 
       <section className="space-y-2">
-        <h2 className="text-lg font-bold text-gray-900">4. Limitación de Responsabilidad</h2>
+        <h2 className="text-lg font-bold title-navy">4. Limitación de Responsabilidad</h2>
         <p>
           QuinielaRD no será responsable por daños directos, indirectos, incidentales o
           consecuentes que surjan del uso o la imposibilidad de uso de este sitio, incluyendo
@@ -73,7 +73,7 @@ const Terminos = () => (
       </section>
 
       <section className="space-y-2">
-        <h2 className="text-lg font-bold text-gray-900">5. Publicidad</h2>
+        <h2 className="text-lg font-bold title-navy">5. Publicidad</h2>
         <p>
           Este sitio utiliza <strong>Google AdSense</strong> para mostrar anuncios publicitarios.
           Estos anuncios pueden utilizar cookies para personalizar el contenido mostrado. Al
@@ -87,7 +87,7 @@ const Terminos = () => (
       </section>
 
       <section className="space-y-2">
-        <h2 className="text-lg font-bold text-gray-900">6. Propiedad Intelectual</h2>
+        <h2 className="text-lg font-bold title-navy">6. Propiedad Intelectual</h2>
         <p>
           El diseño, logotipo y contenido original de QuinielaRD están protegidos por derechos de
           autor. Los nombres y logotipos de las loterías pertenecen a sus respectivos propietarios
@@ -96,7 +96,7 @@ const Terminos = () => (
       </section>
 
       <section className="space-y-2">
-        <h2 className="text-lg font-bold text-gray-900">7. Uso Aceptable</h2>
+        <h2 className="text-lg font-bold title-navy">7. Uso Aceptable</h2>
         <p>Al utilizar QuinielaRD, te comprometes a:</p>
         <ul className="list-disc pl-5 space-y-1">
           <li>No utilizar el sitio con fines ilegales</li>
@@ -107,7 +107,7 @@ const Terminos = () => (
       </section>
 
       <section className="space-y-2">
-        <h2 className="text-lg font-bold text-gray-900">8. Modificaciones</h2>
+        <h2 className="text-lg font-bold title-navy">8. Modificaciones</h2>
         <p>
           Nos reservamos el derecho de modificar estos términos en cualquier momento. Las
           modificaciones entrarán en vigor al ser publicadas en esta página. El uso continuado
@@ -116,7 +116,7 @@ const Terminos = () => (
       </section>
 
       <section className="space-y-2">
-        <h2 className="text-lg font-bold text-gray-900">9. Contacto</h2>
+        <h2 className="text-lg font-bold title-navy">9. Contacto</h2>
         <p>
           Para cualquier consulta sobre estos términos, escríbenos a:{' '}
           <a href="mailto:contacto@quinielard.com" className="text-primary hover:underline font-medium">

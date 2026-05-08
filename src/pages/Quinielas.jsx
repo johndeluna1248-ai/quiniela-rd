@@ -98,7 +98,7 @@ const Quinielas = () => (
         { name: 'Inicio', url: '/' },
         { name: 'Quinielas' }
       ]} />
-      <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900">
+      <h1 className="text-2xl sm:text-3xl font-extrabold title-branded">
         Quinielas Dominicanas: Resultados, Horarios y Guía Completa
       </h1>
     </div>
@@ -115,7 +115,7 @@ const Quinielas = () => (
 
     {/* Sección: ¿Qué es una Quiniela? */}
     <section className="rounded-2xl border border-gray-200 shadow-card bg-white p-6 space-y-3">
-      <h2 className="text-xl font-bold text-gray-900">¿Qué es una Quiniela?</h2>
+      <h2 className="text-xl font-bold title-branded title-branded-sm">¿Qué es una Quiniela?</h2>
       <p className="text-sm text-gray-700 leading-relaxed">
         La quiniela es el juego de lotería más popular de República Dominicana. Consiste en elegir uno o varios números entre el <strong>00 y el 99</strong>, y esperar a que esos números salgan en el sorteo en vivo. Cada sorteo saca tres números: el primero, el segundo y el tercero, usando tres tómbolas electrónicas con 100 bolos cada una.
       </p>
@@ -129,7 +129,7 @@ const Quinielas = () => (
 
     {/* Sección: Cómo se Juega Paso a Paso */}
     <section className="rounded-2xl border border-gray-200 shadow-card bg-white p-6 space-y-4">
-      <h2 className="text-xl font-bold text-gray-900">Cómo se Juega una Quiniela Paso a Paso</h2>
+      <h2 className="text-xl font-bold title-branded title-branded-sm">Cómo se Juega una Quiniela Paso a Paso</h2>
       <p className="text-sm text-gray-700 leading-relaxed">
         Jugar una quiniela es más fácil de lo que parece. Sigue estos 4 pasos:
       </p>
@@ -160,7 +160,7 @@ const Quinielas = () => (
 
     {/* Sección: Tipos de Jugadas */}
     <section className="rounded-2xl border border-gray-200 shadow-card bg-white p-6 space-y-4">
-      <h2 className="text-xl font-bold text-gray-900">Tipos de Jugadas en las Quinielas Dominicanas</h2>
+      <h2 className="text-xl font-bold title-branded title-branded-sm">Tipos de Jugadas en las Quinielas Dominicanas</h2>
       <p className="text-sm text-gray-700 leading-relaxed">
         Existen varias formas de jugar, desde la más simple hasta las que combinan dos sorteos. Estas son las principales:
       </p>
@@ -187,7 +187,7 @@ const Quinielas = () => (
 
     {/* Sección: Horarios completos */}
     <section className="rounded-2xl border border-gray-200 shadow-card bg-white p-6 space-y-4">
-      <h2 className="text-xl font-bold text-gray-900">Horarios de Todas las Quinielas Dominicanas</h2>
+      <h2 className="text-xl font-bold title-branded title-branded-sm">Horarios de Todas las Quinielas Dominicanas</h2>
       <p className="text-sm text-gray-700 leading-relaxed">
         Aquí tienes los horarios actualizados de los sorteos de quinielas más importantes del país. Ten en cuenta que en días feriados algunos sorteos pueden cambiar de hora o suspenderse.
       </p>
@@ -219,7 +219,7 @@ const Quinielas = () => (
 
     {/* Sección: Consejos */}
     <section className="rounded-2xl border border-gray-200 shadow-card bg-white p-6 space-y-3">
-      <h2 className="text-xl font-bold text-gray-900">Consejos para Jugadores de Quiniela</h2>
+      <h2 className="text-xl font-bold title-branded title-branded-sm">Consejos para Jugadores de Quiniela</h2>
       <p className="text-sm text-gray-700 leading-relaxed">
         Jugar quiniela es divertido, pero hay que hacerlo con cabeza fría. Estos tips te ayudan a disfrutar sin perder más de la cuenta:
       </p>
@@ -249,7 +249,7 @@ const Quinielas = () => (
 
     {/* Sección: Preguntas Frecuentes (FAQ) */}
     <section className="rounded-2xl border border-gray-200 shadow-card bg-white p-6 space-y-4">
-      <h2 className="text-xl font-bold text-gray-900">Preguntas Frecuentes sobre las Quinielas</h2>
+      <h2 className="text-xl font-bold title-branded title-branded-sm">Preguntas Frecuentes sobre las Quinielas</h2>
       <div className="space-y-3">
         {preguntasFrecuentes.map((faq, i) => (
           <div key={i} className="bg-gray-50 rounded-xl p-4">

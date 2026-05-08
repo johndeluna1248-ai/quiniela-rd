@@ -8,8 +8,18 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        display: ['Archivo Black', 'system-ui', 'sans-serif'],
       },
       colors: {
+        navy: {
+          darkest: '#0D1F42',
+          base:    '#122859',
+          light:   '#1B357C',
+        },
+        amber: {
+          400: '#FBBF24',
+          500: '#F59E0B',
+        },
         primary: {
           DEFAULT: '#1e3a8a',
           50: '#eff6ff',

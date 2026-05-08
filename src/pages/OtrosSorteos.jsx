@@ -209,7 +209,7 @@ const OtrosSorteos = () => (
         { name: 'Inicio', url: '/' },
         { name: 'Otros Sorteos' }
       ]} />
-      <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900">
+      <h1 className="text-2xl sm:text-3xl font-extrabold title-branded">
         Otros Sorteos de Loterías Dominicanas y Americanas
       </h1>
     </div>
@@ -226,7 +226,7 @@ const OtrosSorteos = () => (
 
     {/* Sección: Qué son los otros sorteos */}
     <section className="rounded-2xl border border-gray-200 shadow-card bg-white p-6 space-y-3">
-      <h2 className="text-xl font-bold text-gray-900">¿Qué son los Otros Sorteos?</h2>
+      <h2 className="text-xl font-bold title-branded title-branded-sm">¿Qué son los Otros Sorteos?</h2>
       <p className="text-sm text-gray-700 leading-relaxed">
         A diferencia de las quinielas (donde eliges 1, 2 o 3 números entre el 00 y el 99), los "otros sorteos" son juegos donde seleccionas varios números de un rango más grande, y los premios suelen ser acumulados. Estos son los tres tipos principales:
       </p>
@@ -290,7 +290,7 @@ const OtrosSorteos = () => (
 
     {/* Sección: Sorteos Americanos con aviso especial */}
     <section className="rounded-2xl border border-gray-200 shadow-card bg-white p-6 space-y-4">
-      <h2 className="text-xl font-bold text-gray-900">Sorteos Americanos (PowerBall, Mega Millions y Más)</h2>
+      <h2 className="text-xl font-bold title-branded title-branded-sm">Sorteos Americanos (PowerBall, Mega Millions y Más)</h2>
       <div className="bg-blue-50 border-l-4 border-blue-500 rounded-lg p-4">
         <p className="text-xs text-gray-800 leading-relaxed">
           <strong>IMPORTANTE:</strong> Estos sorteos NO se venden en República Dominicana. Sin embargo, publicamos sus resultados porque miles de dominicanos viven en Estados Unidos y siguen estos juegos, además de que hay mucha curiosidad por conocer los jackpots que a veces alcanzan cifras históricas.
@@ -311,7 +311,7 @@ const OtrosSorteos = () => (
 
     {/* Sección: Tabla de horarios completos */}
     <section className="rounded-2xl border border-gray-200 shadow-card bg-white p-6 space-y-4">
-      <h2 className="text-xl font-bold text-gray-900">Horarios de Todos los Sorteos Especiales</h2>
+      <h2 className="text-xl font-bold title-branded title-branded-sm">Horarios de Todos los Sorteos Especiales</h2>
       <p className="text-sm text-gray-700 leading-relaxed">
         Aquí tienes los horarios actualizados de todos los sorteos especiales dominicanos y americanos. Los horarios americanos están en hora de República Dominicana.
       </p>
@@ -340,7 +340,7 @@ const OtrosSorteos = () => (
 
     {/* Sección: Cómo funcionan los jackpots acumulados */}
     <section className="rounded-2xl border border-gray-200 shadow-card bg-white p-6 space-y-3">
-      <h2 className="text-xl font-bold text-gray-900">Cómo Funcionan los Sorteos de Jackpot Acumulado</h2>
+      <h2 className="text-xl font-bold title-branded title-branded-sm">Cómo Funcionan los Sorteos de Jackpot Acumulado</h2>
       <p className="text-sm text-gray-700 leading-relaxed">
         La mayoría de estos sorteos funcionan con un <strong>sistema de jackpot acumulado</strong>: si nadie acierta todos los números en un sorteo, el premio se pasa al siguiente y sigue creciendo. Por eso de vez en cuando escuchas que el Loto o el PowerBall "está en 500 millones" o "mil millones", porque llevan semanas o meses sin ganador.
       </p>
@@ -351,7 +351,7 @@ const OtrosSorteos = () => (
 
     {/* Sección: Preguntas Frecuentes */}
     <section className="rounded-2xl border border-gray-200 shadow-card bg-white p-6 space-y-4">
-      <h2 className="text-xl font-bold text-gray-900">Preguntas Frecuentes</h2>
+      <h2 className="text-xl font-bold title-branded title-branded-sm">Preguntas Frecuentes</h2>
       <div className="space-y-3">
         {preguntasFrecuentes.map((faq, i) => (
           <div key={i} className="bg-gray-50 rounded-xl p-4">

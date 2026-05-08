@@ -322,7 +322,7 @@ const Home = () => {
       <div className="animate-fade-in-up">
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
           <div>
-            <h1 className="text-2xl sm:text-3xl font-black text-gray-900 leading-tight">
+            <h1 className="text-2xl sm:text-3xl font-black title-branded leading-tight">
               {titulo}
             </h1>
             <p className="text-gray-500 text-sm mt-1">

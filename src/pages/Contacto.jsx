@@ -14,14 +14,14 @@ const Contacto = () => (
         { name: 'Inicio', url: '/' },
         { name: 'Contacto' }
       ]} />
-      <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900">Contacto</h1>
+      <h1 className="text-2xl sm:text-3xl font-extrabold title-branded">Contacto</h1>
       <p className="text-sm text-gray-500 mt-1">Estamos para ayudarte</p>
     </div>
 
     <div className="bg-white rounded-2xl border border-gray-200 shadow-card p-6 sm:p-8 space-y-6 text-gray-700 text-sm leading-relaxed">
 
       <section className="space-y-2">
-        <h2 className="text-lg font-bold text-gray-900">¿Tienes alguna pregunta o sugerencia?</h2>
+        <h2 className="text-lg font-bold title-navy">¿Tienes alguna pregunta o sugerencia?</h2>
         <p>
           Puedes escribirnos directamente al correo y con gusto te respondemos. QuinielaRD es un
           proyecto independiente y valoramos cada comentario de nuestra comunidad.
@@ -29,7 +29,7 @@ const Contacto = () => (
       </section>
 
       <section className="space-y-4">
-        <h2 className="text-lg font-bold text-gray-900">Correo electrónico</h2>
+        <h2 className="text-lg font-bold title-navy">Correo electrónico</h2>
         <a
           href="mailto:contacto@quinielard.com"
           className="inline-flex items-center gap-3 bg-primary/5 border border-primary/20 text-primary font-semibold rounded-xl px-5 py-3 hover:bg-primary/10 transition-colors"
@@ -42,7 +42,7 @@ const Contacto = () => (
       </section>
 
       <section className="space-y-2">
-        <h2 className="text-lg font-bold text-gray-900">¿Encontraste un error en los resultados?</h2>
+        <h2 className="text-lg font-bold title-navy">¿Encontraste un error en los resultados?</h2>
         <p>
           Si notaste un resultado incorrecto o faltante, por favor indícanos la lotería, la
           fecha y el número que crees que está mal. Lo revisamos y corregimos lo antes posible.
@@ -50,7 +50,7 @@ const Contacto = () => (
       </section>
 
       <section className="space-y-2">
-        <h2 className="text-lg font-bold text-gray-900">Aviso importante</h2>
+        <h2 className="text-lg font-bold title-navy">Aviso importante</h2>
         <p>
           QuinielaRD es un sitio informativo. No somos un sitio oficial de ninguna lotería,
           no vendemos boletos ni participaciones. Los resultados se recopilan de fuentes públicas
