@@ -42,7 +42,7 @@ const DateFilter = ({
             onClick={() => setModo('quinielas')}
             className={`px-4 py-2 rounded-lg text-sm font-bold transition-all duration-200
               ${modo === 'quinielas'
-                ? 'bg-white text-gray-900 shadow-sm'
+                ? 'toggle-active shadow-sm'
                 : 'text-gray-500 hover:text-gray-700'
               }`}
           >
@@ -52,7 +52,7 @@ const DateFilter = ({
             onClick={() => setModo('todos')}
             className={`px-4 py-2 rounded-lg text-sm font-bold transition-all duration-200
               ${modo === 'todos'
-                ? 'bg-white text-gray-900 shadow-sm'
+                ? 'toggle-active shadow-sm'
                 : 'text-gray-500 hover:text-gray-700'
               }`}
           >

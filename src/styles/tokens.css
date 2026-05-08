@@ -74,3 +74,49 @@
 .title-navy {
   color: var(--color-text-dark);
 }
+
+/* BOTONES Y BADGES v2.0 */
+
+.btn-primary {
+  background-color: var(--color-amber-400);
+  color: var(--color-navy-darkest);
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+.btn-primary:hover {
+  background-color: var(--color-amber-500);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(251,191,36,0.3);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-navy-base);
+  border: 1.5px solid var(--color-navy-base);
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+.btn-secondary:hover {
+  background-color: var(--color-navy-base);
+  color: white;
+}
+
+.btn-text {
+  color: var(--color-navy-base);
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+.btn-text:hover {
+  color: var(--color-amber-500);
+}
+
+.toggle-active {
+  background-color: var(--color-navy-base);
+  color: white;
+}
+
+.badge-pending {
+  background-color: rgba(251,191,36,0.15);
+  color: var(--color-amber-500);
+  border: 1px solid rgba(251,191,36,0.4);
+}

@@ -76,14 +76,14 @@ const SorteoListRow = ({ resultado, fromLabel = 'Todos los Sorteos' }) => {
     esVerde ? (
       <button
         onClick={handleShare}
-        className="text-xs font-semibold px-3 py-1.5 rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-50 transition-colors whitespace-nowrap"
+        className="text-xs font-semibold px-3 py-1.5 rounded-lg btn-secondary whitespace-nowrap"
       >
         {copied ? '¡Copiado!' : 'Compartir'}
       </button>
     ) : (
       <button
         onClick={(e) => { e.stopPropagation(); setModal(true) }}
-        className="text-xs font-semibold px-3 py-1.5 rounded-lg bg-[#059669] text-white hover:bg-[#047857] transition-colors whitespace-nowrap"
+        className="text-xs font-semibold px-3 py-1.5 rounded-lg btn-primary whitespace-nowrap"
       >
         🔔 Avísame
       </button>
@@ -94,22 +94,22 @@ const SorteoListRow = ({ resultado, fromLabel = 'Todos los Sorteos' }) => {
     esVerde ? (
       <button
         onClick={handleShare}
+        className="btn-secondary"
         style={{
           width: 44, height: 44, display: 'flex', alignItems: 'center', justifyContent: 'center',
-          border: '1px solid #e5e7eb', borderRadius: 10, background: 'white', cursor: 'pointer',
-          color: '#4b5563', flexShrink: 0,
+          borderRadius: 10, cursor: 'pointer', flexShrink: 0,
         }}
         aria-label="Compartir"
       >
-        {copied ? <span style={{ fontSize: 11, fontWeight: 700, color: '#059669' }}>✓</span> : <ShareIcon />}
+        {copied ? <span style={{ fontSize: 11, fontWeight: 700, color: '#122859' }}>✓</span> : <ShareIcon />}
       </button>
     ) : (
       <button
         onClick={(e) => { e.stopPropagation(); setModal(true) }}
+        className="btn-primary"
         style={{
           width: 44, height: 44, display: 'flex', alignItems: 'center', justifyContent: 'center',
-          border: '1px solid #d1fae5', borderRadius: 10, background: '#059669', cursor: 'pointer',
-          color: 'white', flexShrink: 0,
+          borderRadius: 10, cursor: 'pointer', flexShrink: 0,
         }}
         aria-label="Avísame"
       >

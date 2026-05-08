@@ -118,7 +118,7 @@ const LotteryCard = ({ resultado, className = '', fromLabel = null, style: stagg
     ? 'bg-green-50 text-green-600 border border-green-100'
     : esHistorico
       ? 'bg-gray-50 text-gray-500 border border-gray-200'
-      : 'bg-amber-50 text-amber-600 border border-amber-100'
+      : 'badge-pending'
   const badgeText = esVerde ? 'HOY' : esHistorico ? null : 'PENDIENTE'
   const fechaText = esVerde
     ? 'Resultado de hoy'
@@ -166,7 +166,7 @@ const LotteryCard = ({ resultado, className = '', fromLabel = null, style: stagg
             </p>
             <button
               onClick={handleDetalle}
-              className="text-gray-500 text-sm mt-0.5 text-left hover:text-primary
+              className="text-gray-500 text-sm mt-0.5 text-left hover:text-navy-base
                          hover:underline block w-full transition-colors duration-150 leading-snug"
             >
               {displaySorteo(sorteo)}
@@ -203,9 +203,8 @@ const LotteryCard = ({ resultado, className = '', fromLabel = null, style: stagg
             <button
               onClick={handleCompartir}
               className="inline-flex items-center gap-1.5 text-xs font-semibold
-                         px-3.5 py-1.5 rounded-lg border border-gray-200 text-gray-600
-                         hover:bg-gray-50 hover:border-gray-300
-                         active:scale-[0.97] transition-all duration-150"
+                         px-3.5 py-1.5 rounded-lg btn-secondary
+                         active:scale-[0.97]"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor">
                 <path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z"/>
@@ -216,9 +215,8 @@ const LotteryCard = ({ resultado, className = '', fromLabel = null, style: stagg
             <button
               onClick={() => setModalAbierto(true)}
               className="inline-flex items-center gap-1.5 text-xs font-semibold
-                         px-3.5 py-1.5 rounded-lg bg-[#059669] text-white
-                         hover:bg-green-700 active:scale-[0.97]
-                         transition-all duration-150 shadow-sm"
+                         px-3.5 py-1.5 rounded-lg btn-primary
+                         active:scale-[0.97]"
             >
               🔔 Avísame
             </button>

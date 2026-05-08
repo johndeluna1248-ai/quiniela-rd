@@ -378,7 +378,7 @@ const Home = () => {
           <p className="text-gray-400 text-sm mb-3">{error}</p>
           <button
             onClick={() => { setSearchParams(prev => new URLSearchParams(prev), { replace: true }) }}
-            className="text-primary font-semibold text-sm hover:underline"
+            className="btn-text text-sm"
           >
             Reintentar
           </button>

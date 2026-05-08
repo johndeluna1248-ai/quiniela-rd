@@ -60,8 +60,7 @@ const Modal = ({ onClose }) => {
 
         <button
           onClick={onClose}
-          className="w-full bg-primary text-white rounded-xl py-2.5 text-sm
-                     font-semibold hover:bg-primary-700 active:scale-[0.98] transition-all"
+          className="w-full rounded-xl py-2.5 text-sm btn-primary active:scale-[0.98]"
         >
           Entendido
         </button>

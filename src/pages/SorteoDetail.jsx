@@ -109,7 +109,7 @@ const SorteoDetail = () => {
           </svg>
         </div>
         <p className="text-gray-500 text-lg mb-4">Sorteo "{sorteoName}" no encontrado.</p>
-        <button onClick={handleBack} className="text-primary font-semibold hover:underline">
+        <button onClick={handleBack} className="btn-text">
           ← Volver
         </button>
       </div>
@@ -136,8 +136,7 @@ const SorteoDetail = () => {
         {/* Back button */}
         <button
           onClick={handleBack}
-          className="inline-flex items-center gap-2 text-primary font-semibold mb-6
-                     hover:underline active:scale-[0.98] transition-all group"
+          className="inline-flex items-center gap-2 mb-6 btn-text active:scale-[0.98] group"
         >
           <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" viewBox="0 0 20 20" fill="currentColor">
             <path fillRule="evenodd"
@@ -191,7 +190,7 @@ const SorteoDetail = () => {
         ) : error ? (
           <div className="text-center py-12">
             <p className="text-red-400 text-sm mb-2">Error: {error}</p>
-            <button onClick={() => window.location.reload()} className="text-primary font-semibold text-sm hover:underline">
+            <button onClick={() => window.location.reload()} className="btn-text text-sm">
               Reintentar
             </button>
           </div>
