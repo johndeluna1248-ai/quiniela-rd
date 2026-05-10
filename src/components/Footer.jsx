@@ -38,23 +38,35 @@ const Footer = () => (
                   style={{ color: 'var(--color-amber-400)', letterSpacing: '0.15em' }}>
               Sorteos
             </span>
-            <Link to="/" className="mt-2 transition-colors"
+            <Link to="/quinielas" className="mt-2 transition-colors group"
                   style={{ color: 'var(--color-blue-gray)' }}
-                  onMouseEnter={e => e.target.style.color = '#fff'}
-                  onMouseLeave={e => e.target.style.color = 'var(--color-blue-gray)'}>
+                  onMouseEnter={e => e.currentTarget.style.color = '#fff'}
+                  onMouseLeave={e => e.currentTarget.style.color = 'var(--color-blue-gray)'}>
               Quinielas
+              <span className="block text-[11px] font-normal mt-0.5 leading-tight"
+                    style={{ color: 'rgba(185,197,217,0.5)' }}>
+                Horarios, premios y modalidades
+              </span>
             </Link>
-            <Link to="/?modo=todos" className="mt-2 transition-colors"
+            <Link to="/otros-sorteos" className="mt-3 transition-colors"
                   style={{ color: 'var(--color-blue-gray)' }}
-                  onMouseEnter={e => e.target.style.color = '#fff'}
-                  onMouseLeave={e => e.target.style.color = 'var(--color-blue-gray)'}>
+                  onMouseEnter={e => e.currentTarget.style.color = '#fff'}
+                  onMouseLeave={e => e.currentTarget.style.color = 'var(--color-blue-gray)'}>
               Otros Sorteos
+              <span className="block text-[11px] font-normal mt-0.5 leading-tight"
+                    style={{ color: 'rgba(185,197,217,0.5)' }}>
+                Loto, Kino, PowerBall, Mega Millions
+              </span>
             </Link>
-            <Link to="/quinielas" className="mt-2 transition-colors"
+            <Link to="/loterias" className="mt-3 transition-colors"
                   style={{ color: 'var(--color-blue-gray)' }}
-                  onMouseEnter={e => e.target.style.color = '#fff'}
-                  onMouseLeave={e => e.target.style.color = 'var(--color-blue-gray)'}>
+                  onMouseEnter={e => e.currentTarget.style.color = '#fff'}
+                  onMouseLeave={e => e.currentTarget.style.color = 'var(--color-blue-gray)'}>
               Loterías
+              <span className="block text-[11px] font-normal mt-0.5 leading-tight"
+                    style={{ color: 'rgba(185,197,217,0.5)' }}>
+                Directorio de loterías dominicanas
+              </span>
             </Link>
           </div>
           <div className="flex flex-col">

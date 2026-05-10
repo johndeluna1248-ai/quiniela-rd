@@ -53,13 +53,14 @@ const SectionHeader = ({ orden, nombre }) => {
           style={{ height: logoH, width: 'auto', objectFit: 'contain', flexShrink: 0 }}
         />
       )}
-      <span style={{
+      <h2 style={{
         color: style.text, fontWeight: 700,
         fontSize: orden === 6 ? 14 : 16,
         letterSpacing: '0.03em', whiteSpace: 'nowrap',
+        margin: 0,
       }}>
         {nombre}
-      </span>
+      </h2>
     </div>
   )
 }

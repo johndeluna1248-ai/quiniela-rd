@@ -12,19 +12,22 @@
  */
 
 export const COLORS = {
-  green:  { main: '#059669', dark: '#047857' },
+  green:  { main: '#EAB308', dark: '#CA8A04', text: '#1e40af', glow: 'rgba(202,138,4,0.38)' },
   gold:   { main: '#ca8a04', dark: '#92400e' },
   red:    { main: '#dc2626', dark: '#991b1b' },
   blue:   { main: '#1e40af', dark: '#1e3a8a' },
   orange: { main: '#ea580c', dark: '#c2410c' },
-  gray:   { main: '#9ca3af', dark: '#6b7280' },
+  gray:   { main: '#c2c9d4', dark: '#9aa3b0', text: '#1e40af' },
 }
 
 export const get3D = (colorKey) => {
-  const { main, dark } = COLORS[colorKey] ?? COLORS.green
+  const { main, dark, glow } = COLORS[colorKey] ?? COLORS.green
+  const boxShadow = glow
+    ? `inset -3px -3px 8px rgba(0,0,0,0.22), inset 2px 2px 6px rgba(255,255,255,0.55), 0 5px 16px ${glow}`
+    : `inset -3px -3px 8px rgba(0,0,0,0.25), inset 2px 2px 6px rgba(255,255,255,0.4), 0 4px 10px rgba(0,0,0,0.2)`
   return {
     background: `radial-gradient(circle at 25% 25%, rgba(255,255,255,0.35) 0%, ${main} 45%, ${dark} 100%)`,
-    boxShadow: `inset -3px -3px 8px rgba(0,0,0,0.25), inset 2px 2px 6px rgba(255,255,255,0.4), 0 4px 10px rgba(0,0,0,0.2)`,
+    boxShadow,
   }
 }
 
@@ -74,8 +77,11 @@ export const Ball = ({
         {/* Número — sin filter, siempre legible */}
         <span style={{
           position: 'relative', zIndex: 1,
-          fontSize, fontWeight: 800, color: 'white',
-          textShadow: '0 0 3px rgba(0,0,0,0.9), 0 1px 4px rgba(0,0,0,0.8)',
+          fontSize, fontWeight: 800,
+          color: COLORS[colorKey]?.text ?? 'white',
+          textShadow: COLORS[colorKey]?.text
+            ? '0 1px 3px rgba(255,255,255,0.55), 0 -1px 1px rgba(0,0,0,0.12)'
+            : '0 0 3px rgba(0,0,0,0.9), 0 1px 4px rgba(0,0,0,0.8)',
           lineHeight: 1,
         }}>
           {numero}
@@ -131,8 +137,9 @@ const BallsDisplay = ({
     </div>
   )
 
-  // ── Quiniela / Pega 3 / Mega Chance — 3 bolas ────────────────────────────
-  if (tipo === 'quiniela' || tipo === 'pega3' || tipo === 'megachance') {
+  // ── Quiniela / Pega 3 / Mega Chance / Agarra 4 / Super Palé — bolas verdes en fila
+  if (tipo === 'quiniela' || tipo === 'pega3' || tipo === 'megachance'
+      || tipo === 'agarra4' || tipo === 'superpale') {
     return singleRow(greenBalls(numeros))
   }
 

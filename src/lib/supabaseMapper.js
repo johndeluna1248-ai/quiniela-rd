@@ -90,6 +90,8 @@ export const TODOS_SORTEOS_ORDEN = [
   // LoteDom
   ['Lotedom',      'Quiniela LoteDom'],
   ['Lotedom',      'El Quemaíto Mayor'],
+  ['Lotedom',      'Agarra 4 LoteDom'],
+  ['Lotedom',      'Super Palé LoteDom'],
   // Americanas
   ['Americanas',   'Quiniela New York Tarde'],
   ['Americanas',   'Quiniela New York Noche'],
@@ -130,6 +132,8 @@ const HORA_MAP = {
   'quiniela la suerte 6:00 pm': '6:00 PM',
   'quiniela lotedom': '1:00 PM',
   'el quemaíto mayor': '1:00 PM',
+  'agarra 4 lotedom': '1:00 PM',
+  'super palé lotedom': '1:00 PM',
   'quiniela new york tarde': '2:30 PM',
   'quiniela new york noche': '10:30 PM',
   'quiniela florida día': '1:00 PM',
@@ -199,6 +203,8 @@ function detectTipo(sorteo, numeros) {
   if (s.includes('loto 5'))             return 'loto5plus'
   if (s.includes('mega chance'))        return 'megachance'
   if (s.includes('quemaíto') || s.includes('quemaito')) return 'quemaito'
+  if (s.includes('agarra 4'))                           return 'agarra4'
+  if (s.includes('super palé') || s.includes('super pale')) return 'superpale'
   if (s.includes('mega millions'))      return 'megamillions'
   if (s.includes('powerball'))          return 'powerball'
   if (s.includes('cash 4 life'))       return 'cash4life'
