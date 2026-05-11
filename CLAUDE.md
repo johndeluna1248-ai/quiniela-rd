@@ -314,3 +314,44 @@ Cuando JAD recibe una tarea de QuinielaRD, identificar el sub-agente correcto:
 | Build, git, deploy Cloudflare Pages | `quinielard-deploy` |
 
 **Especificaciones completas:** `~/Desktop/JAD Asisten/04-sub-agentes/activos/quinielard-*.md`
+
+---
+
+## 🎨 Identidad Visual v2.0 (8 mayo 2026)
+
+### Paleta oficial
+- Navy oscuro: #0D1F42 (`--color-navy-darkest`)
+- Navy base: #122859 (`--color-navy-base`)
+- Navy claro: #1B357C (`--color-navy-light`)
+- Amber: #FBBF24 (`--color-amber-400`)
+- Amber hover: #F59E0B (`--color-amber-500`)
+- Blanco: #FFFFFF
+- Azul-gris: #B9C5D9 (`--color-blue-gray`, texto sobre navy)
+
+### Tipografía
+- Display: Archivo Black (logo, brand)
+- Body: Inter (existente, no cambió)
+
+### Sistema visual
+- Amber = acción/atención (Avísame, Entendido, PENDIENTE)
+- Verde = estado positivo (HOY, "en vivo", contadores)
+- Navy = marca/navegación (header, footer, toggle activo, links)
+- Gris = funcional/neutro (Cerrar, deshabilitado)
+
+### Archivos clave
+- `src/styles/tokens.css` → fuente única de tokens y utilities
+- `src/index.css` → solo `.card`, `.card:hover` y `.glass` (limpio)
+- `tailwind.config.js` → colores `navy{}` y `amber{}` extendidos
+
+### Utilities disponibles
+- `.btn-primary`, `.btn-secondary`, `.btn-text`
+- `.toggle-active`
+- `.badge-pending`
+- `.title-branded`, `.title-branded-sm`, `.title-navy`
+- `var(--gradient-brand)`, `var(--gradient-amber-underline)`
+
+### Pendientes para próxima iteración visual
+1. Logo bolo amber 3D (reemplazar cuadrado Q actual)
+2. Filtros con label + ícono (Tipo de Sorteo + Fecha)
+3. Historial: mostrar año + ocultar "0 de hoy" en fechas pasadas
+4. Botón "↺ Hoy" amber (visible solo cuando no estás en fecha actual)
