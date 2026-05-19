@@ -13,11 +13,48 @@ import { useState, useMemo, useEffect, useRef } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import AdBanner from '../components/AdBanner'
 import DateFilter from '../components/DateFilter'
+import FAQSchema from '../components/FAQSchema'
 import ResultsGrid from '../components/ResultsGrid'
 import SEO from '../components/SEO'
 import { fetchQuinielas, fetchTodosSorteos } from '../lib/fetchQuinielas'
 import { hoyRD } from '../lib/supabaseMapper'
 import { EMPRESA_INFO } from '../data/loteriasInfo'
+import { Link } from 'react-router-dom'
+
+const FAQ_HOME = [
+  {
+    pregunta: '¿A qué hora salen los resultados de la quiniela de hoy?',
+    respuesta: 'Los horarios varían por lotería: La Primera Día a las 12:00 PM, La Suerte 12:30 PM, Quiniela Real 12:55 PM, LoteDom 1:00 PM, Nacional Tarde 2:30 PM, La Primera Noche 7:00 PM, Loteka 7:55 PM, Leidsa 8:55 PM (lun-sáb) y 3:55 PM (dom), Nacional Noche 9:00 PM. Anguila y King Lottery tienen sorteos desde las 10:00 AM hasta las 9:00 PM.'
+  },
+  {
+    pregunta: '¿Cuánto paga la quiniela dominicana?',
+    respuesta: 'La quiniela paga RD$60 por cada peso apostado si pegas el primer número, RD$8 por el segundo y RD$4 por el tercero. El palé paga aproximadamente RD$1,000 por peso si ambos números salen (sin importar el orden), y la tripleta hasta RD$20,000 por peso.'
+  },
+  {
+    pregunta: '¿Dónde ver los números que salieron hoy en la lotería dominicana?',
+    respuesta: 'En QuinielaRD publicamos los resultados de todas las loterías dominicanas en tiempo real: Lotería Nacional, Leidsa, Loteka, Lotería Real, La Primera, La Suerte, LoteDom, King Lottery y Anguila. Los números aparecen pocos minutos después de cada sorteo oficial.'
+  },
+  {
+    pregunta: '¿Cómo saber si pegué la quiniela?',
+    respuesta: 'Compara el número en tu ticket con los tres números ganadores del sorteo. Si tu número coincide con el 1.° premio ganas 60 veces lo apostado, con el 2.° ganas 8 veces y con el 3.° ganas 4 veces. Para palé, ambos números deben aparecer entre los tres ganadores (en cualquier posición y orden).'
+  },
+  {
+    pregunta: '¿Cuál es la quiniela más jugada de República Dominicana?',
+    respuesta: 'Las quinielas más populares del país son la Quiniela Nacional (Tarde 2:30 PM y Noche 9:00 PM), la Quiniela Leidsa (8:55 PM) y la Quiniela Loteka (7:55 PM). La Lotería Nacional es la más antigua, fundada en 1882, y sus sorteos se transmiten por CERTV Canal 4.'
+  }
+]
+
+const LOTERIAS_LINKS = [
+  { id: 'nacional', label: 'Lotería Nacional' },
+  { id: 'leidsa', label: 'Leidsa' },
+  { id: 'real', label: 'Lotería Real' },
+  { id: 'loteka', label: 'Loteka' },
+  { id: 'primera', label: 'La Primera' },
+  { id: 'suerte', label: 'La Suerte' },
+  { id: 'lotedom', label: 'LoteDom' },
+  { id: 'king', label: 'King Lottery' },
+  { id: 'anguila', label: 'Anguila' },
+]
 
 const DIAS = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado']
 const MESES = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
@@ -317,6 +354,7 @@ const Home = () => {
         keywords="quiniela de hoy, quiniela dominicana, lotería nacional hoy, leidsa hoy, loteka hoy, números que salieron hoy, pale de hoy, resultados lotería RD, quiniela RD"
         canonical="https://quinielard.com/"
       />
+      <FAQSchema faqs={FAQ_HOME} />
 
       {/* Hero section */}
       <div className="animate-fade-in-up">
@@ -395,6 +433,68 @@ const Home = () => {
       {empresa && !loading && <EmpresaInfoSection empresaChip={empresa} />}
 
       <AdBanner slot="HOME_BOTTOM" className="h-[50px] md:h-[90px]" />
+
+      {/* Sección SEO: acceso rápido por lotería */}
+      <section className="bg-white rounded-2xl border border-gray-200 shadow-card p-6 space-y-4">
+        <h2 className="text-base font-bold title-navy">Resultados por Lotería</h2>
+        <p className="text-sm text-gray-600 leading-relaxed">
+          Consulta los resultados de cada empresa de lotería dominicana por separado. Actualización automática tras cada sorteo oficial.
+        </p>
+        <div className="flex flex-wrap gap-2">
+          {LOTERIAS_LINKS.map(l => (
+            <Link key={l.id} to={`/resultados/${l.id}`}
+              className="px-3 py-1.5 rounded-full border border-gray-200 text-sm text-gray-600 hover:bg-gray-50 hover:text-primary hover:border-primary transition-colors">
+              {l.label}
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* Sección SEO: texto enriquecido para indexación */}
+      <section className="bg-white rounded-2xl border border-gray-200 shadow-card p-6 space-y-4 text-sm text-gray-700 leading-relaxed">
+        <h2 className="text-base font-bold title-navy">Quiniela de Hoy en República Dominicana</h2>
+        <p>
+          <strong>QuinielaRD</strong> es el sitio que consolida los resultados de todas las loterías dominicanas en un solo lugar. Cada día publicamos los números ganadores de más de 30 sorteos: <strong>Lotería Nacional</strong> (Tarde y Noche), <strong>Leidsa</strong>, <strong>Lotería Real</strong>, <strong>Loteka</strong>, <strong>La Primera</strong>, <strong>La Suerte</strong>, <strong>LoteDom</strong>, <strong>King Lottery</strong>, <strong>Anguila</strong>, <strong>New York</strong>, <strong>Florida</strong>, <strong>Powerball</strong> y <strong>Mega Millions</strong>.
+        </p>
+        <p>
+          Los resultados se publican automáticamente pocos minutos después de cada sorteo oficial. No necesitas esperar a ver el noticiero ni buscar en varias páginas. Aquí tienes todo en un solo lugar.
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+          <div className="space-y-1">
+            <p className="font-semibold text-gray-800">Loterías dominicanas:</p>
+            <ul className="space-y-0.5 text-gray-600">
+              <li>• Lotería Nacional — Tarde 2:30 PM / Noche 9:00 PM</li>
+              <li>• Leidsa — 8:55 PM (lun-sáb) / 3:55 PM (dom)</li>
+              <li>• Lotería Real — 12:55 PM diario</li>
+              <li>• Loteka — 7:55 PM diario</li>
+              <li>• La Primera — 12:00 PM y 7:00 PM diario</li>
+            </ul>
+          </div>
+          <div className="space-y-1">
+            <p className="font-semibold text-gray-800">Más sorteos:</p>
+            <ul className="space-y-0.5 text-gray-600">
+              <li>• La Suerte — 12:30 PM y 6:00 PM diario</li>
+              <li>• LoteDom — 1:00 PM diario</li>
+              <li>• King Lottery — 10:30 AM y 9:00 PM</li>
+              <li>• Anguila — 10 AM, 1 PM, 6 PM y 9 PM</li>
+              <li>• NY, Florida, Powerball, Mega Millions</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section visible */}
+      <section className="bg-white rounded-2xl border border-gray-200 shadow-card p-6 space-y-4">
+        <h2 className="text-base font-bold title-navy">Preguntas Frecuentes</h2>
+        <div className="space-y-3">
+          {FAQ_HOME.map((faq, i) => (
+            <div key={i} className="bg-gray-50 rounded-xl p-4">
+              <h3 className="font-bold text-gray-900 text-sm mb-1.5">▸ {faq.pregunta}</h3>
+              <p className="text-xs text-gray-700 leading-relaxed">{faq.respuesta}</p>
+            </div>
+          ))}
+        </div>
+      </section>
 
     </main>
   )
